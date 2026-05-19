@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mark Wilson Mendoza — AI Automation Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green:#0FA86B; --green-dim:#0d8f5c;
+  --dark:#06060f; --dark2:#0d0d1c; --dark3:#141428;
+  --muted:#888; --border:rgba(255,255,255,0.08);
+  --text:#f0f0ee; --text2:#aaa;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+#cd{position:fixed;z-index:9999;width:8px;height:8px;border-radius:50%;background:var(--green);pointer-events:none;transform:translate(-50%,-50%);transition:width .18s,height .18s,background .18s}
+#cr{position:fixed;z-index:9998;width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(15,168,107,.5);pointer-events:none;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s,opacity .2s}
+#cg{position:fixed;z-index:9997;width:320px;height:320px;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(15,168,107,.07) 0%,transparent 70%)}
+body.ch #cd{width:13px;height:13px;background:#fff}
+body.ch #cr{width:54px;height:54px;border-color:var(--green)}
+body.ct #cd{width:2px;height:26px;border-radius:2px}
+body.ct #cr{opacity:0}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:2px;z-index:9999;background:var(--green);width:0;box-shadow:0 0 10px rgba(15,168,107,.8)}
+
+/* TOOLTIP */
+#stip{position:fixed;z-index:9996;background:rgba(8,8,24,.95);border:.5px solid rgba(15,168,107,.5);border-radius:10px;padding:8px 14px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#fff;pointer-events:none;opacity:0;transition:opacity .18s;backdrop-filter:blur(10px);white-space:nowrap}
+#scat{font-size:10px;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-top:2px;font-weight:400}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(6,6,15,.8);backdrop-filter:blur(20px);border-bottom:.5px solid var(--border);transition:padding .3s,background .3s}
+nav.scrolled{padding:.85rem 4rem;background:rgba(6,6,15,.98)}
+.nl{font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:-.02em;color:var(--text);text-decoration:none;cursor:none}
+.nl span{color:var(--green)}
+.nls{display:flex;gap:2.5rem;list-style:none}
+.nls a{font-size:13px;font-weight:500;letter-spacing:.05em;color:var(--text2);text-decoration:none;text-transform:uppercase;position:relative;padding-bottom:2px;cursor:none;transition:color .25s}
+.nls a::after{content:'';position:absolute;bottom:-1px;left:0;right:100%;height:1px;background:var(--green);transition:right .35s cubic-bezier(.4,0,.2,1)}
+.nls a:hover,.nls a.active{color:var(--green)}
+.nls a:hover::after,.nls a.active::after{right:0}
+.ncta{background:var(--green)!important;color:#fff!important;padding:8px 20px!important;border-radius:40px!important;text-transform:none!important;transition:background .2s,transform .15s,box-shadow .2s!important}
+.ncta::after{display:none!important}
+.ncta:hover{background:var(--green-dim)!important;transform:translateY(-1px)!important;box-shadow:0 6px 24px rgba(15,168,107,.35)!important}
+.hbg{display:none;cursor:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px}
+.hbg span{display:block;width:22px;height:1.5px;background:var(--text);transition:.3s}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:8rem 4rem 5rem;position:relative;overflow:hidden}
+#gc{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hfade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(6,6,15,.96) 0%,rgba(6,6,15,.85) 20%,rgba(6,6,15,.5) 38%,rgba(6,6,15,.1) 52%,transparent 62%)}
+.hcon{position:relative;z-index:2;max-width:520px;width:100%}
+.hey{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:500;margin-bottom:1.5rem}
+.hey::before{content:'';width:28px;height:1px;background:var(--green)}
+.blk{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);animation:bka 1.6s ease-in-out infinite}
+@keyframes bka{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+.hn{font-family:'Syne',sans-serif;font-size:clamp(3rem,5.5vw,5.5rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:.4em}
+.hn .it{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--green);display:inline-block;transition:letter-spacing .45s}
+.hn:hover .it{letter-spacing:.03em}
+.hsub{font-size:clamp(.95rem,1.7vw,1.15rem);color:var(--text2);font-weight:300;max-width:480px;margin-bottom:2.5rem;line-height:1.75}
+.ha{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.bm{display:inline-block;cursor:none}
+.bp{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;padding:13px 28px;border-radius:40px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;text-decoration:none;cursor:none;transition:background .2s,box-shadow .2s}
+.bp:hover{background:var(--green-dim);box-shadow:0 8px 30px rgba(15,168,107,.45)}
+.bs{display:inline-flex;align-items:center;gap:8px;border:.5px solid rgba(255,255,255,.22);color:var(--text2);padding:13px 28px;border-radius:40px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;text-decoration:none;cursor:none;transition:border-color .2s,color .2s}
+.bs:hover{border-color:var(--green);color:var(--green)}
+.hst{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:.5px solid var(--border);flex-wrap:wrap}
+.si{cursor:none}
+.sn{font-family:'Syne',sans-serif;font-size:2.1rem;font-weight:800;line-height:1;transition:color .25s}
+.sn span{color:var(--green)}
+.si:hover .sn{color:var(--green)}
+.sl{font-size:13px;color:var(--text2);margin-top:4px}
+
+/* SECTIONS */
+section:not(#hero){padding:6rem 4rem}
+.con{max-width:1100px;margin:0 auto}
+.stg{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:500;margin-bottom:1.25rem}
+.stg::before{content:'';width:20px;height:1px;background:var(--green)}
+.sh{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:3rem}
+.sh em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--green)}
+
+/* ABOUT */
+#about{background:var(--dark2)}
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.at p{font-size:15px;color:var(--text2);line-height:1.9;margin-bottom:1.25rem}
+.at p strong{color:var(--text);font-weight:500}
+.abs{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.5rem}
+.bdg{font-size:12px;font-weight:500;padding:6px 14px;border-radius:40px;border:.5px solid rgba(15,168,107,.4);color:var(--green);cursor:none;transition:background .2s,color .2s,transform .15s}
+.bdg:hover{background:var(--green);color:#fff;transform:translateY(-2px)}
+.tc{background:rgba(20,20,40,.9);border:.5px solid var(--border);border-radius:16px;padding:2rem;cursor:none;transition:box-shadow .3s,border-color .3s}
+.tc:hover{box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 0 .5px rgba(15,168,107,.3);border-color:rgba(15,168,107,.3)}
+.ai{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:.5px solid var(--border)}
+.ai:last-child{border-bottom:none;padding-bottom:0}
+.ai:first-child{padding-top:0}
+.aic{width:36px;height:36px;border-radius:8px;background:rgba(15,168,107,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;transition:background .2s,transform .25s}
+.ai:hover .aic{background:rgba(15,168,107,.25);transform:scale(1.1) rotate(-6deg)}
+.ail{font-size:12px;color:var(--text2);margin-bottom:2px}
+.aiv{font-size:14px;font-weight:500;color:var(--text)}
+
+/* SKILLS */
+#skills{background:var(--dark)}
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.sc{background:rgba(13,13,28,.9);border:.5px solid var(--border);border-radius:16px;padding:1.75rem;position:relative;overflow:hidden;cursor:none;transition:border-color .3s,transform .25s,box-shadow .3s}
+.sp{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(15,168,107,.1) 0%,transparent 55%);opacity:0;transition:opacity .3s}
+.sc:hover .sp{opacity:1}
+.sc:hover{border-color:rgba(15,168,107,.35);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.sct{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.sk{display:flex;flex-wrap:wrap;gap:7px}
+.t2{font-size:12px;padding:5px 12px;border-radius:40px;background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.08);color:var(--text2);cursor:none;position:relative;overflow:hidden;transition:color .2s,border-color .2s}
+.t2f{position:absolute;inset:0;border-radius:40px;background:var(--green);transform:scale(0);opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s}
+.t2:hover{color:#fff;border-color:var(--green)}
+.t2:hover .t2f{transform:scale(1);opacity:1}
+.t2 span{position:relative;z-index:1}
+.rip{position:absolute;border-radius:50%;background:rgba(15,168,107,.3);transform:scale(0);animation:ripa .55s linear forwards;pointer-events:none}
+@keyframes ripa{to{transform:scale(4);opacity:0}}
+
+/* EXPERIENCE */
+#experience{background:var(--dark2)}
+.exp-wrap{display:grid;grid-template-columns:270px 1fr;gap:0;min-height:360px;border:.5px solid var(--border);border-radius:20px;overflow:hidden}
+.exp-rail{background:rgba(8,8,20,.7);border-right:.5px solid var(--border);display:flex;flex-direction:column;padding:.75rem 0}
+.exp-tab{position:relative;padding:1.1rem 1.5rem;cursor:none;border:none;background:none;text-align:left;width:100%;transition:background .22s}
+.exp-tab::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2.5px;background:var(--green);transform:scaleY(0);transform-origin:center;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.exp-tab.active::before{transform:scaleY(1)}
+.exp-tab.active{background:rgba(15,168,107,.07)}
+.exp-tab:hover:not(.active){background:rgba(255,255,255,.03)}
+.exp-tab-role{font-family:'Syne',sans-serif;font-size:12.5px;font-weight:700;color:var(--text2);line-height:1.3;transition:color .22s}
+.exp-tab.active .exp-tab-role,.exp-tab:hover .exp-tab-role{color:var(--text)}
+.exp-tab-co{font-size:11px;color:var(--muted);margin-top:3px;transition:color .22s}
+.exp-tab.active .exp-tab-co{color:var(--green)}
+.exp-tab-dot{position:absolute;right:1.25rem;top:50%;width:6px;height:6px;border-radius:50%;background:var(--green);opacity:0;transition:opacity .25s,transform .25s;transform:translateY(-50%) scale(0)}
+.exp-tab.active .exp-tab-dot{opacity:1;transform:translateY(-50%) scale(1)}
+.exp-panel{position:relative;overflow:hidden;background:rgba(13,13,28,.6)}
+.exp-card{position:absolute;inset:0;padding:2.25rem 2.5rem;opacity:0;transform:translateX(22px);transition:opacity .38s cubic-bezier(.4,0,.2,1),transform .38s cubic-bezier(.4,0,.2,1);pointer-events:none;overflow-y:auto}
+.exp-card.active{opacity:1;transform:translateX(0);pointer-events:auto}
+.exp-card.exit{opacity:0;transform:translateX(-22px);transition:opacity .25s,transform .25s}
+.exp-meta{display:flex;align-items:center;gap:8px;margin-bottom:1.25rem;flex-wrap:wrap}
+.exp-period{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--green);background:rgba(15,168,107,.1);border:.5px solid rgba(15,168,107,.25);padding:4px 12px;border-radius:40px}
+.exp-company{font-size:11px;color:var(--text2);padding:4px 12px;border:.5px solid var(--border);border-radius:40px}
+.exp-title{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;color:var(--text);margin-bottom:1.25rem;line-height:1.2}
+.exp-title em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--green)}
+.exp-items{display:flex;flex-direction:column;gap:9px}
+.exp-item{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text2);line-height:1.7;opacity:0;transform:translateY(12px);transition:opacity .35s,transform .35s}
+.exp-card.active .exp-item:nth-child(1){transition-delay:.07s}
+.exp-card.active .exp-item:nth-child(2){transition-delay:.14s}
+.exp-card.active .exp-item:nth-child(3){transition-delay:.21s}
+.exp-card.active .exp-item:nth-child(4){transition-delay:.28s}
+.exp-card.active .exp-item:nth-child(5){transition-delay:.35s}
+.exp-card.active .exp-item{opacity:1;transform:translateY(0)}
+.exp-icon{width:20px;height:20px;border-radius:5px;background:rgba(15,168,107,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;font-size:9px;color:var(--green);transition:background .2s,transform .2s}
+.exp-item:hover .exp-icon{background:rgba(15,168,107,.28);transform:scale(1.15)}
+.exp-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 55% at 95% 5%,rgba(15,168,107,.07) 0%,transparent 65%);opacity:0;transition:opacity .45s}
+.exp-card.active .exp-glow{opacity:1}
+.exp-progress{display:flex;gap:6px;padding:.75rem 1.5rem;border-top:.5px solid var(--border);background:rgba(8,8,20,.4)}
+.exp-pip{height:3px;border-radius:2px;background:var(--border);cursor:none;flex:1;transition:background .3s,transform .2s}
+.exp-pip.active{background:var(--green)}
+.exp-pip:hover{transform:scaleY(2)}
+@media(max-width:900px){
+  .exp-wrap{grid-template-columns:1fr;min-height:auto}
+  .exp-rail{flex-direction:row;overflow-x:auto;border-right:none;border-bottom:.5px solid var(--border);padding:.5rem;scrollbar-width:none}
+  .exp-rail::-webkit-scrollbar{display:none}
+  .exp-tab{padding:.65rem .9rem;white-space:nowrap;flex-shrink:0;min-width:auto}
+  .exp-tab::before{top:auto;bottom:0;left:0;right:0;width:100%;height:2.5px;transform:scaleX(0);transform-origin:center}
+  .exp-tab.active::before{transform:scaleX(1)}
+  .exp-tab-dot{display:none}
+  .exp-panel{min-height:360px}
+  .exp-card{padding:1.5rem}
+  .exp-progress{padding:.65rem 1rem}
+}
+
+/* PROJECTS */
+#projects{background:var(--dark)}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.75rem}
+.pc{background:rgba(13,13,28,.9);border:.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;cursor:none;transition:border-color .3s,transform .3s,box-shadow .3s}
+.pc:hover{border-color:rgba(15,168,107,.4);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 .5px rgba(15,168,107,.15)}
+/* Animated gradient top border */
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--green),#7c3aed,var(--green),transparent);background-size:200% 100%;animation:borderFlow 3s linear infinite;opacity:0;transition:opacity .4s}
+.pc:hover::before{opacity:1}
+@keyframes borderFlow{0%{background-position:200% 0}100%{background-position:-200% 0}}
+/* Flow map preview */
+.pv{position:relative;height:200px;overflow:hidden;background:rgba(6,6,20,.95);border-bottom:.5px solid var(--border)}
+.pv-canvas{width:100%;height:100%;position:relative}
+/* Floating node cards in preview */
+.fn{position:absolute;background:rgba(20,20,45,.95);border:.5px solid rgba(255,255,255,.12);border-radius:10px;padding:6px 10px;font-size:10px;font-weight:500;color:var(--text2);display:flex;align-items:center;gap:6px;white-space:nowrap;transition:border-color .3s,color .3s,transform .3s,box-shadow .3s}
+.fn-icon{width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+/* Connector lines SVG */
+.pv svg{position:absolute;inset:0;width:100%;height:100%}
+/* Node animations — each floats at slightly different speed */
+.fn-1{top:18px;left:12px;animation:floatA 4.2s ease-in-out infinite}
+.fn-2{top:18px;left:50%;transform:translateX(-50%);animation:floatB 3.8s ease-in-out infinite .4s}
+.fn-3{top:18px;right:12px;animation:floatA 4.5s ease-in-out infinite .8s}
+.fn-4{top:82px;left:12px;animation:floatB 4.0s ease-in-out infinite .2s}
+.fn-5{top:82px;left:50%;transform:translateX(-50%);animation:floatA 4.3s ease-in-out infinite .6s}
+.fn-6{top:82px;right:12px;animation:floatB 3.9s ease-in-out infinite 1s}
+.fn-7{top:146px;left:50%;transform:translateX(-50%);animation:floatA 4.1s ease-in-out infinite .3s}
+@keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.fn-2,.fn-5,.fn-7{animation-name:floatBCenter}
+@keyframes floatBCenter{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-5px)}}
+/* Pulse dot — animated "live" indicator */
+.plive{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+.plive::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(15,168,107,.5)}50%{opacity:.6;box-shadow:0 0 0 5px rgba(15,168,107,0)}}
+/* Connector line animation */
+.conn-line{stroke-dasharray:5 4;animation:dash 1.4s linear infinite;stroke:rgba(15,168,107,.35)}
+@keyframes dash{to{stroke-dashoffset:-18}}
+/* Project card body */
+.pb{padding:1.5rem}
+.pstat{display:flex;align-items:center;justify-content:space-between;margin-bottom:.9rem}
+.ptag{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:40px;background:rgba(15,168,107,.12);color:var(--green);border:.5px solid rgba(15,168,107,.3)}
+.pname{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:var(--text);margin-bottom:.6rem;line-height:1.2;transition:color .25s}
+.pc:hover .pname{color:var(--green)}
+.pdesc{font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:1.25rem}
+.ptools{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem}
+.ptool{font-size:11px;padding:4px 10px;border-radius:40px;background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.08);color:var(--text2)}
+.pflow{border-top:.5px solid var(--border);padding-top:1rem;margin-top:-.2rem}
+.pflow-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+.pflow-steps{display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+.pfs{font-size:11px;color:var(--text2);padding:3px 10px;border-radius:40px;background:rgba(255,255,255,.03);border:.5px solid rgba(255,255,255,.07)}
+.pfa{font-size:11px;color:rgba(15,168,107,.5);padding:0 2px}
+/* Drive link indicator */
+.pc[data-drive]{cursor:none}
+.pc-drive-badge{position:absolute;top:10px;right:10px;z-index:10;display:flex;align-items:center;gap:5px;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green);background:rgba(6,6,15,.85);border:.5px solid rgba(15,168,107,.35);border-radius:40px;padding:5px 10px;opacity:0;transform:translateY(-4px) scale(.95);transition:opacity .25s,transform .25s;backdrop-filter:blur(8px);pointer-events:none}
+.pc-drive-badge svg{width:11px;height:11px;flex-shrink:0}
+.pc[data-drive]:hover .pc-drive-badge{opacity:1;transform:translateY(0) scale(1)}
+.pc-drive-ripple{position:absolute;inset:0;border-radius:20px;border:1.5px solid rgba(15,168,107,.5);opacity:0;transform:scale(1);pointer-events:none}
+.pc[data-drive]:active .pc-drive-ripple{animation:driveClick .4s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes driveClick{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.04)}}
+
+/* CERTS */
+#certifications{background:var(--dark2)}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.cer{background:rgba(13,13,28,.9);border:.5px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:12px;position:relative;overflow:hidden;cursor:none;transition:border-color .25s,transform .25s,box-shadow .25s}
+.cer::after{content:'';position:absolute;bottom:0;left:0;right:100%;height:2px;background:var(--green);transition:right .4s cubic-bezier(.4,0,.2,1)}
+.cer:hover::after{right:0}
+.cer:hover{border-color:rgba(15,168,107,.35);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.ci{width:34px;height:34px;border-radius:8px;background:rgba(15,168,107,.1);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;transition:transform .25s,background .25s}
+.cer:hover .ci{transform:rotate(-8deg) scale(1.15);background:rgba(15,168,107,.22)}
+.cn{font-size:13px;font-weight:500;color:var(--text);line-height:1.4}
+
+/* CONTACT */
+#contact{background:var(--dark2);text-align:center}
+.cc{background:rgba(20,20,40,.9);border:.5px solid var(--border);border-radius:24px;padding:4rem 3rem;max-width:720px;margin:0 auto;position:relative;overflow:hidden;cursor:none;transition:border-color .3s,box-shadow .3s}
+.cc:hover{border-color:rgba(15,168,107,.3);box-shadow:0 0 60px rgba(15,168,107,.08)}
+.ccg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 40% at 50% 100%,rgba(15,168,107,.1) 0%,transparent 70%)}
+.cc h2{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;margin-bottom:1rem;position:relative}
+.cc p{font-size:15px;color:var(--text2);margin-bottom:2rem;line-height:1.8;position:relative}
+.cls{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+.cl{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:.5px solid var(--border);color:var(--text2);padding:12px 20px;border-radius:40px;font-size:13px;font-weight:500;text-decoration:none;cursor:none;transition:border-color .2s,color .2s,transform .2s,box-shadow .2s}
+.cl svg{width:15px;height:15px;flex-shrink:0}
+.cl:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px);box-shadow:0 6px 20px rgba(15,168,107,.2)}
+.cl-meet{background:var(--green);border-color:var(--green);color:#fff}
+.cl-meet:hover{background:var(--green-dim);border-color:var(--green-dim);color:#fff;box-shadow:0 8px 28px rgba(15,168,107,.45)}
+
+/* FOOTER */
+footer{padding:2rem 4rem;background:var(--dark);border-top:.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+footer p{font-size:13px;color:var(--muted)}
+footer span{color:var(--green)}
+
+/* FADE UP */
+.fu{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.fu.vis{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  body{cursor:auto}
+  #cd,#cr,#cg{display:none}
+  nav{padding:1.25rem 2rem}
+  .nls{display:none}
+  .hbg{display:flex}
+  #hero{padding:7rem 2rem 4rem}
+  section:not(#hero){padding:4rem 2rem}
+  .ag{grid-template-columns:1fr;gap:2.5rem}
+  .sg{grid-template-columns:1fr 1fr}
+  .job{grid-template-columns:1fr;gap:.5rem;padding-left:2rem}
+  footer{padding:1.5rem 2rem}
+  .hfade{background:linear-gradient(90deg,rgba(6,6,15,.95) 0%,rgba(6,6,15,.7) 50%,rgba(6,6,15,.4) 100%)}
+  .pg{grid-template-columns:1fr}
+}
+@media(max-width:560px){.sg{grid-template-columns:1fr}.hst{gap:2rem}}
+</style>
+</head>
+<body>
+
+<div id="cd"></div><div id="cr"></div><div id="cg"></div>
+<div id="prog"></div>
+<div id="stip"><div id="sname"></div><div id="scat"></div></div>
+
+<nav id="nav">
+  <a href="#hero" class="nl">MM</a>
+  <ul class="nls">
+    <li><a href="#about" data-s="about">About</a></li>
+    <li><a href="#skills" data-s="skills">Skills</a></li>
+    <li><a href="#experience" data-s="experience">Experience</a></li>
+    <li><a href="#projects" data-s="projects">Projects</a></li>
+    <li><a href="#certifications" data-s="certifications">Certs</a></li>
+    <li><a href="#contact" class="ncta" data-s="contact">Hire Me</a></li>
+  </ul>
+  <button class="hbg" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<section id="hero">
+  <canvas id="gc"></canvas>
+  <div class="hfade"></div>
+  <div class="hcon" id="hc">
+    <div class="hey"><span class="blk"></span> Available for freelance work</div>
+    <h1 class="hn">Mark Wilson<br><span class="it">Mendoza</span></h1>
+    <p class="hsub">AI Automation Specialist &amp; IT Professional. I build intelligent workflows, cloud systems, and automation pipelines that let businesses scale without the busywork.</p>
+    <div class="ha">
+      <div class="bm"><a href="#contact" class="bp">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Get in Touch
+      </a></div>
+      <div class="bm"><a href="#experience" class="bs">View Experience →</a></div>
+    </div>
+    <div class="hst">
+      <div class="si"><div class="sn" data-target="10">10<span>+</span></div><div class="sl">Years in IT</div></div>
+      <div class="si"><div class="sn" data-target="4">4<span>+</span></div><div class="sl">Companies Served</div></div>
+      <div class="si"><div class="sn" data-target="29">29</div><div class="sl">Tools Mastered</div></div>
+      <div class="si"><div class="sn" data-target="600">600<span>+</span></div><div class="sl">Users Supported</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="con">
+    <div class="ag">
+      <div class="at fu">
+        <div class="stg">About Me</div>
+        <h2 class="sh">IT Pro turned <em>AI Builder</em></h2>
+        <p>I'm a Philippines-based IT professional with over 10 years of experience spanning cloud engineering, ITSM, and technical operations. Today, I specialize in <strong>AI-powered automation</strong> — connecting tools, building workflows, and designing systems that work while you sleep.</p>
+        <p>From managing Google Cloud infrastructure at Telus International to overseeing full IT operations at a resort, I've operated across industries and scales. Now, as an independent <strong>AI Automation Specialist</strong>, I help businesses unlock efficiency through smart integrations and intelligent agents.</p>
+        <p>I'm a proud member of <strong>Technical Virtual Assistants PH</strong> — the pioneering AI-powered Tech VA community in the Philippines.</p>
+        <div class="abs">
+          <span class="bdg">ITIL Framework</span>
+          <span class="bdg">GCP Certified</span>
+          <span class="bdg">ServiceNow Admin</span>
+          <span class="bdg">AI Agent Builder</span>
+        </div>
+      </div>
+      <div class="tc fu" style="transition-delay:.15s" id="tcard">
+        <div class="ai"><div class="aic">📍</div><div><div class="ail">Location</div><div class="aiv">Tanauan City, Batangas, Philippines</div></div></div>
+        <div class="ai"><div class="aic">🎓</div><div><div class="ail">Education</div><div class="aiv">B.S. Information Technology — LPU Laguna</div></div></div>
+        <div class="ai"><div class="aic">💼</div><div><div class="ail">Current Role</div><div class="aiv">AI Automation Specialist (Freelance)</div></div></div>
+        <div class="ai"><div class="aic">📧</div><div><div class="ail">Email</div><div class="aiv"><a href="mailto:krammendoza05@gmail.com" style="color:var(--green);text-decoration:none">krammendoza05@gmail.com</a></div></div></div>
+        <div class="ai"><div class="aic">📱</div><div><div class="ail">Phone</div><div class="aiv">0961-605-3121</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="con">
+    <div class="stg fu">What I Do</div>
+    <h2 class="sh fu">Skills &amp; <em>Expertise</em></h2>
+    <div class="sg">
+      <div class="sc fu"><div class="sp"></div>
+        <div class="sct">⚡ AI &amp; Automation</div>
+        <div class="sk">
+          <span class="t2"><span class="t2f"></span><span>Zapier</span></span>
+          <span class="t2"><span class="t2f"></span><span>Make.com</span></span>
+          <span class="t2"><span class="t2f"></span><span>n8n</span></span>
+          <span class="t2"><span class="t2f"></span><span>AI Agents</span></span>
+          <span class="t2"><span class="t2f"></span><span>Prompt Engineering</span></span>
+          <span class="t2"><span class="t2f"></span><span>Lovable</span></span>
+          <span class="t2"><span class="t2f"></span><span>Webhooks</span></span>
+        </div>
+      </div>
+      <div class="sc fu" style="transition-delay:.1s"><div class="sp"></div>
+        <div class="sct">🤖 AI Models</div>
+        <div class="sk">
+          <span class="t2"><span class="t2f"></span><span>ChatGPT</span></span>
+          <span class="t2"><span class="t2f"></span><span>Claude AI</span></span>
+          <span class="t2"><span class="t2f"></span><span>Gemini</span></span>
+          <span class="t2"><span class="t2f"></span><span>Grok (xAI)</span></span>
+          <span class="t2"><span class="t2f"></span><span>Perplexity</span></span>
+        </div>
+      </div>
+      <div class="sc fu" style="transition-delay:.2s"><div class="sp"></div>
+        <div class="sct">☁️ Cloud &amp; Dev</div>
+        <div class="sk">
+          <span class="t2"><span class="t2f"></span><span>Google Cloud</span></span>
+          <span class="t2"><span class="t2f"></span><span>GitHub</span></span>
+          <span class="t2"><span class="t2f"></span><span>Supabase</span></span>
+          <span class="t2"><span class="t2f"></span><span>Vercel</span></span>
+          <span class="t2"><span class="t2f"></span><span>Figma</span></span>
+          <span class="t2"><span class="t2f"></span><span>WordPress</span></span>
+        </div>
+      </div>
+      <div class="sc fu" style="transition-delay:.1s"><div class="sp"></div>
+        <div class="sct">💼 CRM &amp; Business</div>
+        <div class="sk">
+          <span class="t2"><span class="t2f"></span><span>HubSpot</span></span>
+          <span class="t2"><span class="t2f"></span><span>GoHighLevel</span></span>
+          <span class="t2"><span class="t2f"></span><span>Salesforce</span></span>
+          <span class="t2"><span class="t2f"></span><span>Airtable</span></span>
+          <span class="t2"><span class="t2f"></span><span>Shopify</span></span>
+          <span class="t2"><span class="t2f"></span><span>Stripe</span></span>
+        </div>
+      </div>
+      <div class="sc fu" style="transition-delay:.2s"><div class="sp"></div>
+        <div class="sct">📋 Productivity</div>
+        <div class="sk">
+          <span class="t2"><span class="t2f"></span><span>Notion</span></span>
+          <span class="t2"><span class="t2f"></span><span>Asana</span></span>
+          <span class="t2"><span class="t2f"></span><span>Google Docs</span></span>
+          <span class="t2"><span class="t2f"></span><span>Google Sheets</span></span>
+          <span class="t2"><span class="t2f"></span><span>Google Calendar</span></span>
+        </div>
+      </div>
+      <div class="sc fu" style="transition-delay:.3s"><div class="sp"></div>
+        <div class="sct">💬 Comms &amp; ITSM</div>
+        <div class="sk">
+          <span class="t2"><span class="t2f"></span><span>Slack</span></span>
+          <span class="t2"><span class="t2f"></span><span>Discord</span></span>
+          <span class="t2"><span class="t2f"></span><span>Telegram</span></span>
+          <span class="t2"><span class="t2f"></span><span>Gmail</span></span>
+          <span class="t2"><span class="t2f"></span><span>ServiceNow</span></span>
+          <span class="t2"><span class="t2f"></span><span>JIRA</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="con">
+    <div class="stg fu">Career</div>
+    <h2 class="sh fu">Work <em>Experience</em></h2>
+    <div class="exp-wrap fu">
+
+      <!-- Left rail -->
+      <div class="exp-rail" id="expRail">
+        <button class="exp-tab active" data-exp="0">
+          <div class="exp-tab-role">AI Automation Specialist</div>
+          <div class="exp-tab-co">Independent / Freelance</div>
+          <div class="exp-tab-dot"></div>
+        </button>
+        <button class="exp-tab" data-exp="1">
+          <div class="exp-tab-role">IT Manager</div>
+          <div class="exp-tab-co">Leonida’s Resort</div>
+          <div class="exp-tab-dot"></div>
+        </button>
+        <button class="exp-tab" data-exp="2">
+          <div class="exp-tab-role">Technical Engineer</div>
+          <div class="exp-tab-co">Telus — Google Cloud</div>
+          <div class="exp-tab-dot"></div>
+        </button>
+        <button class="exp-tab" data-exp="3">
+          <div class="exp-tab-role">ServiceNow Specialist</div>
+          <div class="exp-tab-co">Telus International</div>
+          <div class="exp-tab-dot"></div>
+        </button>
+        <button class="exp-tab" data-exp="4">
+          <div class="exp-tab-role">MIS IT Support</div>
+          <div class="exp-tab-co">DMMC Hospital</div>
+          <div class="exp-tab-dot"></div>
+        </button>
+      </div>
+
+      <!-- Right panel -->
+      <div class="exp-panel" id="expPanel">
+
+        <div class="exp-card active" data-exp="0">
+          <div class="exp-glow"></div>
+          <div class="exp-meta">
+            <span class="exp-period">Oct 2025 – Present</span>
+            <span class="exp-company">Independent / Freelance</span>
+          </div>
+          <div class="exp-title">AI Automation <em>Specialist</em></div>
+          <div class="exp-items">
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Design and deploy scalable AI-driven automation systems to streamline business operations</span></div>
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Build intelligent AI agents for customer support, lead qualification, and appointment scheduling</span></div>
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Develop and optimize multi-step workflows using Zapier, Make, and n8n</span></div>
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Integrate CRMs, marketing platforms, and communication tools via APIs, webhooks, and custom endpoints</span></div>
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Create prompt-engineered AI solutions for content generation, customer interactions, and data processing</span></div>
+          </div>
+        </div>
+
+        <div class="exp-card" data-exp="1">
+          <div class="exp-glow"></div>
+          <div class="exp-meta">
+            <span class="exp-period">Nov 2021 – Aug 2025</span>
+            <span class="exp-company">Leonida’s Resort and Restaurant</span>
+          </div>
+          <div class="exp-title">IT <em>Manager</em></div>
+          <div class="exp-items">
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Managed daily IT operations including network, systems, and end-user support</span></div>
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Led and supervised the IT team, improving service delivery and response times</span></div>
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Ensured system security, backups, and infrastructure reliability</span></div>
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Implemented process improvements and maintained IT documentation</span></div>
+          </div>
+        </div>
+
+        <div class="exp-card" data-exp="2">
+          <div class="exp-glow"></div>
+          <div class="exp-meta">
+            <span class="exp-period">Apr 2018 – 2021</span>
+            <span class="exp-company">Telus International Philippines</span>
+          </div>
+          <div class="exp-title">Technical Engineer — <em>Google Cloud</em></div>
+          <div class="exp-items">
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Monitored and optimized system performance using Google Cloud Operations Suite</span></div>
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Implemented security best practices including IAM, encryption, and compliance</span></div>
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Collaborated with dev teams to integrate GCP: Storage, BigQuery, Cloud Functions, Kubernetes</span></div>
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Managed quota increases for compute, storage, and network resources</span></div>
+          </div>
+        </div>
+
+        <div class="exp-card" data-exp="3">
+          <div class="exp-glow"></div>
+          <div class="exp-meta">
+            <span class="exp-period">2015 – Feb 2018</span>
+            <span class="exp-company">Telus International Philippines</span>
+          </div>
+          <div class="exp-title">ServiceNow <em>Support Specialist</em></div>
+          <div class="exp-items">
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Delivered L1/L2 support for ServiceNow platform users across the organization</span></div>
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Built custom reports and dashboards using Performance Analytics and Report Designer</span></div>
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Supported ITSM processes including incident resolution, change requests, and problem management</span></div>
+          </div>
+        </div>
+
+        <div class="exp-card" data-exp="4">
+          <div class="exp-glow"></div>
+          <div class="exp-meta">
+            <span class="exp-period">Mar 2014 – Feb 2015</span>
+            <span class="exp-company">DMMC Hospital</span>
+          </div>
+          <div class="exp-title">MIS <em>IT Support</em></div>
+          <div class="exp-items">
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Provided technical support for 600+ users in a hospital environment</span></div>
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Managed Active Directory, system backups, and antivirus updates</span></div>
+            <div class="exp-item"><div class="exp-icon">▸</div><span>Troubleshot hardware, software, and network issues across departments</span></div>
+          </div>
+        </div>
+
+        <div class="exp-progress" id="expProgress">
+          <div class="exp-pip active" data-exp="0"></div>
+          <div class="exp-pip" data-exp="1"></div>
+          <div class="exp-pip" data-exp="2"></div>
+          <div class="exp-pip" data-exp="3"></div>
+          <div class="exp-pip" data-exp="4"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROJECTS SECTION ═══════════════ -->
+<section id="projects">
+  <div class="con">
+    <div class="stg fu">Portfolio</div>
+    <h2 class="sh fu">Featured <em>Projects</em></h2>
+    <div class="pg">
+
+      <!-- Project Card: AI Content Repurposing -->
+      <div class="pc fu" data-drive="https://drive.google.com/drive/folders/1RyYP31dH0nBzfM2It_Xbxnacc6DqAI0y?usp=sharing">
+        <div class="pc-drive-ripple"></div>
+        <div class="pc-drive-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Files</div>
+        <!-- Animated Flow Preview -->
+        <div class="pv">
+          <div class="pv-canvas" id="pv1">
+            <!-- SVG connector lines drawn behind nodes -->
+            <svg viewBox="0 0 340 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+              <!-- Row 1 -> Row 2 connections -->
+              <line class="conn-line" x1="60" y1="46" x2="60" y2="82"/>
+              <line class="conn-line" x1="170" y1="46" x2="170" y2="82" style="animation-delay:.3s"/>
+              <line class="conn-line" x1="280" y1="46" x2="280" y2="82" style="animation-delay:.6s"/>
+              <!-- Row 2 -> Row 3 funnel -->
+              <line class="conn-line" x1="60" y1="110" x2="170" y2="146" style="animation-delay:.2s"/>
+              <line class="conn-line" x1="170" y1="110" x2="170" y2="146" style="animation-delay:.5s"/>
+              <line class="conn-line" x1="280" y1="110" x2="170" y2="146" style="animation-delay:.8s"/>
+            </svg>
+
+            <!-- Row 1: Triggers -->
+            <div class="fn fn-1" style="top:18px;left:8px">
+              <div class="fn-icon" style="background:rgba(15,168,107,.15)">📁</div>
+              <span>Google Drive</span>
+            </div>
+            <div class="fn fn-2" style="top:18px">
+              <div class="fn-icon" style="background:rgba(124,58,237,.15)">⚡</div>
+              <span>Zapier Filter</span>
+            </div>
+            <div class="fn fn-3" style="top:18px;right:8px">
+              <div class="fn-icon" style="background:rgba(66,133,244,.15)">🤖</div>
+              <span>AI by Zapier</span>
+            </div>
+
+            <!-- Row 2: AI Processing -->
+            <div class="fn fn-4" style="top:82px;left:8px">
+              <div class="fn-icon" style="background:rgba(66,133,244,.15)">📝</div>
+              <span>Transcription</span>
+            </div>
+            <div class="fn fn-5" style="top:82px">
+              <div class="fn-icon" style="background:rgba(66,133,244,.15)">✍️</div>
+              <span>Blog Generator</span>
+            </div>
+            <div class="fn fn-6" style="top:82px;right:8px">
+              <div class="fn-icon" style="background:rgba(239,68,68,.15)">🔁</div>
+              <span>Loop Items</span>
+            </div>
+
+            <!-- Row 3: Outputs -->
+            <div class="fn fn-7" style="top:148px">
+              <div class="fn-icon" style="background:rgba(59,130,246,.2)">📤</div>
+              <span>FB Page · Gmail · Paths</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Body -->
+        <div class="pb">
+          <div class="pstat">
+            <span class="ptag">Zapier · AI Automation</span>
+            <span class="plive">Live</span>
+          </div>
+          <div class="pname">AI Content Repurposing</div>
+          <p class="pdesc">
+            A fully automated content pipeline built in Zapier that watches a Google Drive folder for new video files, generates a full transcription using AI, and produces ready-to-publish blog posts — then intelligently routes the content to Facebook Pages or Gmail drafts based on conditional path logic.
+          </p>
+          <div class="ptools">
+            <span class="ptool">Zapier</span>
+            <span class="ptool">Google Drive</span>
+            <span class="ptool">AI by Zapier</span>
+            <span class="ptool">Facebook Pages</span>
+            <span class="ptool">Gmail</span>
+            <span class="ptool">Looping by Zapier</span>
+          </div>
+          <div class="pflow">
+            <div class="pflow-label">Automation Flow</div>
+            <div class="pflow-steps">
+              <span class="pfs">New File in Drive</span>
+              <span class="pfa">▸</span>
+              <span class="pfs">Filter</span>
+              <span class="pfa">▸</span>
+              <span class="pfs">AI Transcription</span>
+              <span class="pfa">▸</span>
+              <span class="pfs">AI Blog Post</span>
+              <span class="pfa">▸</span>
+              <span class="pfs">Loop Items</span>
+              <span class="pfa">▸</span>
+              <span class="pfs">Split Paths</span>
+              <span class="pfa">▸</span>
+              <span class="pfs">Publish / Draft</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card: Lead Engagement Workflow -->
+      <div class="pc fu" style="transition-delay:.15s" data-drive="https://drive.google.com/drive/folders/1RyYP31dH0nBzfM2It_Xbxnacc6DqAI0y?usp=sharing">
+        <div class="pc-drive-ripple"></div>
+        <div class="pc-drive-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Files</div>
+        <!-- Animated Flow Preview -->
+        <div class="pv">
+          <div class="pv-canvas">
+            <svg viewBox="0 0 340 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+              <!-- Trigger -> Split -->
+              <line class="conn-line" x1="170" y1="36" x2="170" y2="62" style="animation-delay:.1s"/>
+              <!-- Split -> 5 paths -->
+              <line class="conn-line" x1="170" y1="80" x2="34" y2="108" style="animation-delay:.2s"/>
+              <line class="conn-line" x1="170" y1="80" x2="101" y2="108" style="animation-delay:.3s"/>
+              <line class="conn-line" x1="170" y1="80" x2="170" y2="108" style="animation-delay:.4s"/>
+              <line class="conn-line" x1="170" y1="80" x2="239" y2="108" style="animation-delay:.5s"/>
+              <line class="conn-line" x1="170" y1="80" x2="306" y2="108" style="animation-delay:.6s"/>
+              <!-- paths -> actions -->
+              <line class="conn-line" x1="34"  y1="128" x2="34"  y2="155" style="animation-delay:.3s"/>
+              <line class="conn-line" x1="101" y1="128" x2="101" y2="155" style="animation-delay:.4s"/>
+              <line class="conn-line" x1="170" y1="128" x2="170" y2="155" style="animation-delay:.5s"/>
+              <line class="conn-line" x1="239" y1="128" x2="239" y2="155" style="animation-delay:.6s"/>
+              <line class="conn-line" x1="306" y1="128" x2="306" y2="155" style="animation-delay:.7s"/>
+            </svg>
+
+            <!-- Row 1: Trigger -->
+            <div class="fn fn-2" style="top:10px;background:rgba(15,168,107,.08);border-color:rgba(15,168,107,.3)">
+              <div class="fn-icon" style="background:rgba(15,168,107,.2)">🗂️</div>
+              <span style="color:var(--green)">Asana Trigger</span>
+            </div>
+
+            <!-- Row 2: Split -->
+            <div class="fn fn-2" style="top:62px">
+              <div class="fn-icon" style="background:rgba(124,58,237,.15)">🔀</div>
+              <span>Split into Paths</span>
+            </div>
+
+            <!-- Row 3: 5 path labels -->
+            <div class="fn" style="top:108px;left:2px;padding:4px 6px;animation:floatA 4.2s ease-in-out infinite">
+              <div class="fn-icon" style="background:rgba(59,130,246,.15);font-size:9px">🟢</div>
+              <span style="font-size:9px">Ready</span>
+            </div>
+            <div class="fn" style="top:108px;left:70px;padding:4px 6px;animation:floatB 3.8s ease-in-out infinite .3s">
+              <div class="fn-icon" style="background:rgba(234,179,8,.15);font-size:9px">📭</div>
+              <span style="font-size:9px">No Reply</span>
+            </div>
+            <div class="fn" style="top:108px;left:137px;padding:4px 6px;animation:floatA 4.5s ease-in-out infinite .6s">
+              <div class="fn-icon" style="background:rgba(168,85,247,.15);font-size:9px">💬</div>
+              <span style="font-size:9px">Quoted</span>
+            </div>
+            <div class="fn" style="top:108px;left:204px;padding:4px 6px;animation:floatB 4.0s ease-in-out infinite .2s">
+              <div class="fn-icon" style="background:rgba(34,197,94,.15);font-size:9px">✅</div>
+              <span style="font-size:9px">Approved</span>
+            </div>
+            <div class="fn" style="top:108px;right:2px;padding:4px 6px;animation:floatA 4.3s ease-in-out infinite .5s">
+              <div class="fn-icon" style="background:rgba(239,68,68,.15);font-size:9px">💰</div>
+              <span style="font-size:9px">Closed</span>
+            </div>
+
+            <!-- Row 4: Actions per path -->
+            <div class="fn" style="top:158px;left:2px;padding:4px 6px;animation:floatB 4.1s ease-in-out infinite .4s">
+              <div class="fn-icon" style="background:rgba(15,168,107,.15);font-size:9px">📁</div>
+              <span style="font-size:9px">Drive + Asana</span>
+            </div>
+            <div class="fn" style="top:158px;left:70px;padding:4px 6px;animation:floatA 3.9s ease-in-out infinite .7s">
+              <div class="fn-icon" style="background:rgba(234,67,53,.15);font-size:9px">📧</div>
+              <span style="font-size:9px">Follow-up x2</span>
+            </div>
+            <div class="fn" style="top:158px;left:137px;padding:4px 6px;animation:floatB 4.4s ease-in-out infinite .1s">
+              <div class="fn-icon" style="background:rgba(234,67,53,.15);font-size:9px">📨</div>
+              <span style="font-size:9px">Quote Email</span>
+            </div>
+            <div class="fn" style="top:158px;left:204px;padding:4px 6px;animation:floatA 4.2s ease-in-out infinite .9s">
+              <div class="fn-icon" style="background:rgba(15,168,107,.15);font-size:9px">🤖</div>
+              <span style="font-size:9px">AI Welcome</span>
+            </div>
+            <div class="fn" style="top:158px;right:2px;padding:4px 6px;animation:floatB 3.7s ease-in-out infinite .3s">
+              <div class="fn-icon" style="background:rgba(66,133,244,.15);font-size:9px">✨</div>
+              <span style="font-size:9px">AI Recommend</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Body -->
+        <div class="pb">
+          <div class="pstat">
+            <span class="ptag">Zapier · CRM Automation</span>
+            <span class="plive">Live</span>
+          </div>
+          <div class="pname">Lead Engagement Workflow</div>
+          <p class="pdesc">
+            A 24-step intelligent lead management system built in Zapier that triggers from Asana task updates and routes each lead through 5 conditional paths — Ready to Start, No Response, Quoted, Approved, and Paid &amp; Closed. Each path executes tailored actions: creating Google Drive folders, sending follow-up sequences, generating AI-composed welcome emails, and delivering AI-powered recommendation emails to closed clients.
+          </p>
+          <div class="ptools">
+            <span class="ptool">Zapier</span>
+            <span class="ptool">Asana</span>
+            <span class="ptool">Gmail</span>
+            <span class="ptool">Google Drive</span>
+            <span class="ptool">AI by Zapier</span>
+            <span class="ptool">Delay by Zapier</span>
+            <span class="ptool">Filter by Zapier</span>
+          </div>
+          <div class="pflow">
+            <div class="pflow-label">Automation Flow</div>
+            <div class="pflow-steps">
+              <span class="pfs">Asana Task Updated</span>
+              <span class="pfa">▸</span>
+              <span class="pfs">Split 5 Paths</span>
+              <span class="pfa">▸</span>
+              <span class="pfs">Path Conditions</span>
+              <span class="pfa">▸</span>
+              <span class="pfs">Drive / Email / AI</span>
+              <span class="pfa">▸</span>
+              <span class="pfs">Delay &amp; Follow-up</span>
+              <span class="pfa">▸</span>
+              <span class="pfs">Filter &amp; Send</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card: Export Xero → Asana -->
+      <div class="pc fu" style="transition-delay:.3s" data-drive="https://drive.google.com/drive/folders/1tGuE40PZAgydKrGr-dah66csR0X0D3kK?usp=sharing">
+        <div class="pc-drive-ripple"></div>
+        <div class="pc-drive-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Files</div>
+        <div class="pv">
+          <div class="pv-canvas">
+            <svg viewBox="0 0 340 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+              <line class="conn-line" x1="60" y1="40" x2="130" y2="40" style="animation-delay:.1s"/>
+              <line class="conn-line" x1="170" y1="40" x2="210" y2="40" style="animation-delay:.2s"/>
+              <line class="conn-line" x1="250" y1="40" x2="250" y2="75" style="animation-delay:.3s"/>
+              <line class="conn-line" x1="250" y1="75" x2="170" y2="110" style="animation-delay:.4s"/>
+              <line class="conn-line" x1="250" y1="75" x2="250" y2="110" style="animation-delay:.5s"/>
+              <line class="conn-line" x1="170" y1="130" x2="170" y2="158" style="animation-delay:.6s"/>
+              <line class="conn-line" x1="250" y1="130" x2="250" y2="158" style="animation-delay:.7s"/>
+            </svg>
+            <div class="fn" style="top:22px;left:8px;animation:floatA 4s ease-in-out infinite">
+              <div class="fn-icon" style="background:rgba(239,68,68,.15)">🗂️</div><span>Asana Trigger</span>
+            </div>
+            <div class="fn" style="top:22px;left:50%;transform:translateX(-50%);animation:floatBCenter 4.3s ease-in-out infinite .3s">
+              <div class="fn-icon" style="background:rgba(30,166,167,.2)">✦</div><span>Xero API</span>
+            </div>
+            <div class="fn" style="top:22px;right:8px;animation:floatA 3.9s ease-in-out infinite .6s">
+              <div class="fn-icon" style="background:rgba(124,58,237,.15)">🔀</div><span>Router</span>
+            </div>
+            <div class="fn" style="top:90px;left:50%;transform:translateX(-50%);animation:floatBCenter 4.2s ease-in-out infinite .2s">
+              <div class="fn-icon" style="background:rgba(52,168,83,.15)">📊</div><span>Sheets · Iterator</span>
+            </div>
+            <div class="fn" style="top:90px;right:8px;animation:floatA 4.1s ease-in-out infinite .5s">
+              <div class="fn-icon" style="background:rgba(124,58,237,.15)">🛠️</div><span>Tools · Sleep</span>
+            </div>
+            <div class="fn" style="top:158px;left:50%;transform:translateX(-50%);animation:floatBCenter 3.8s ease-in-out infinite .4s">
+              <div class="fn-icon" style="background:rgba(239,68,68,.15)">📎</div><span>Asana Attachment</span>
+            </div>
+          </div>
+        </div>
+        <div class="pb">
+          <div class="pstat">
+            <span class="ptag">Make.com · Finance</span>
+            <span class="plive">Live</span>
+          </div>
+          <div class="pname">Export Xero Transactions → Asana</div>
+          <p class="pdesc">A Make.com scenario that watches Asana for completed tasks, makes an API call to Xero to pull account transactions, iterates through the data using Google Sheets, aggregates the records, and uploads the final CSV report as an Asana task attachment — running automatically every 15 minutes.</p>
+          <div class="ptools">
+            <span class="ptool">Make.com</span>
+            <span class="ptool">Asana</span>
+            <span class="ptool">Xero</span>
+            <span class="ptool">Google Sheets</span>
+            <span class="ptool">Router</span>
+            <span class="ptool">Iterator</span>
+          </div>
+          <div class="pflow">
+            <div class="pflow-label">Automation Flow</div>
+            <div class="pflow-steps">
+              <span class="pfs">Asana Task Done</span><span class="pfa">▸</span>
+              <span class="pfs">Xero API Call</span><span class="pfa">▸</span>
+              <span class="pfs">Router</span><span class="pfa">▸</span>
+              <span class="pfs">Iterator + Sheets</span><span class="pfa">▸</span>
+              <span class="pfs">Aggregate CSV</span><span class="pfa">▸</span>
+              <span class="pfs">Upload to Asana</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card: Auto Sort Gmail Attachments -->
+      <div class="pc fu" style="transition-delay:.1s" data-drive="https://drive.google.com/drive/folders/1tGuE40PZAgydKrGr-dah66csR0X0D3kK?usp=sharing">
+        <div class="pc-drive-ripple"></div>
+        <div class="pc-drive-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Files</div>
+        <div class="pv">
+          <div class="pv-canvas">
+            <svg viewBox="0 0 340 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+              <line class="conn-line" x1="40" y1="40" x2="85" y2="40" style="animation-delay:.1s"/>
+              <line class="conn-line" x1="125" y1="40" x2="165" y2="40" style="animation-delay:.2s"/>
+              <line class="conn-line" x1="205" y1="40" x2="245" y2="40" style="animation-delay:.3s"/>
+              <line class="conn-line" x1="285" y1="40" x2="285" y2="80" style="animation-delay:.4s"/>
+              <line class="conn-line" x1="285" y1="80" x2="205" y2="115" style="animation-delay:.5s"/>
+              <line class="conn-line" x1="205" y1="135" x2="205" y2="158" style="animation-delay:.6s"/>
+            </svg>
+            <div class="fn" style="top:22px;left:4px;animation:floatA 4.2s ease-in-out infinite">
+              <div class="fn-icon" style="background:rgba(234,67,53,.15)">📧</div><span>Watch Gmail</span>
+            </div>
+            <div class="fn" style="top:22px;left:82px;animation:floatB 3.9s ease-in-out infinite .2s">
+              <div class="fn-icon" style="background:rgba(234,67,53,.15)">📋</div><span>List Media</span>
+            </div>
+            <div class="fn" style="top:22px;left:162px;animation:floatA 4.4s ease-in-out infinite .4s">
+              <div class="fn-icon" style="background:rgba(66,133,244,.15)">✨</div><span>AI Analyze</span>
+            </div>
+            <div class="fn" style="top:22px;right:4px;animation:floatB 4.0s ease-in-out infinite .6s">
+              <div class="fn-icon" style="background:rgba(66,133,244,.15)">🏷️</div><span>Gen Filename</span>
+            </div>
+            <div class="fn" style="top:90px;left:162px;animation:floatA 4.3s ease-in-out infinite .3s">
+              <div class="fn-icon" style="background:rgba(255,167,38,.2)">☁️</div><span>Upload Drive</span>
+            </div>
+            <div class="fn" style="top:155px;left:162px;animation:floatBCenter 3.8s ease-in-out infinite .5s">
+              <div class="fn-icon" style="background:rgba(52,168,83,.15)">📝</div><span>Log + Notify</span>
+            </div>
+          </div>
+        </div>
+        <div class="pb">
+          <div class="pstat">
+            <span class="ptag">Make.com · AI Automation</span>
+            <span class="plive">Live</span>
+          </div>
+          <div class="pname">Auto Sort Gmail Attachments on Drive</div>
+          <p class="pdesc">A Make.com integration that watches Gmail for new emails, lists all attachments and media, uploads each file to an AI model for analysis, generates a smart filename based on content, uploads the renamed file to Google Drive, logs it to a Sheets tracker, and sends an email notification — all automatically.</p>
+          <div class="ptools">
+            <span class="ptool">Make.com</span>
+            <span class="ptool">Gmail</span>
+            <span class="ptool">Google Drive</span>
+            <span class="ptool">Google Sheets</span>
+            <span class="ptool">AI Vision</span>
+          </div>
+          <div class="pflow">
+            <div class="pflow-label">Automation Flow</div>
+            <div class="pflow-steps">
+              <span class="pfs">Watch Gmail</span><span class="pfa">▸</span>
+              <span class="pfs">List Attachments</span><span class="pfa">▸</span>
+              <span class="pfs">AI Analyze</span><span class="pfa">▸</span>
+              <span class="pfs">Generate Name</span><span class="pfa">▸</span>
+              <span class="pfs">Upload Drive</span><span class="pfa">▸</span>
+              <span class="pfs">Log + Notify</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card: Smart AI File Classification -->
+      <div class="pc fu" style="transition-delay:.2s" data-drive="https://drive.google.com/drive/folders/1RyYP31dH0nBzfM2It_Xbxnacc6DqAI0y?usp=sharing">
+        <div class="pc-drive-ripple"></div>
+        <div class="pc-drive-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Files</div>
+        <div class="pv">
+          <div class="pv-canvas">
+            <svg viewBox="0 0 340 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+              <line class="conn-line" x1="170" y1="38" x2="170" y2="65" style="animation-delay:.1s"/>
+              <line class="conn-line" x1="170" y1="88" x2="170" y2="112" style="animation-delay:.2s"/>
+              <line class="conn-line" x1="170" y1="132" x2="170" y2="155" style="animation-delay:.3s"/>
+              <line class="conn-line" x1="170" y1="155" x2="40"  y2="175" style="animation-delay:.4s"/>
+              <line class="conn-line" x1="170" y1="155" x2="105" y2="175" style="animation-delay:.45s"/>
+              <line class="conn-line" x1="170" y1="155" x2="170" y2="175" style="animation-delay:.5s"/>
+              <line class="conn-line" x1="170" y1="155" x2="235" y2="175" style="animation-delay:.55s"/>
+              <line class="conn-line" x1="170" y1="155" x2="300" y2="175" style="animation-delay:.6s"/>
+            </svg>
+            <div class="fn fn-2" style="top:10px;background:rgba(15,168,107,.08);border-color:rgba(15,168,107,.3)">
+              <div class="fn-icon" style="background:rgba(255,167,38,.2)">📁</div><span style="color:var(--green)">New Drive File</span>
+            </div>
+            <div class="fn fn-2" style="top:65px">
+              <div class="fn-icon" style="background:rgba(255,167,38,.2)">🔍</div><span>Retrieve File</span>
+            </div>
+            <div class="fn fn-2" style="top:112px">
+              <div class="fn-icon" style="background:rgba(66,133,244,.15)">🤖</div><span>AI Classify</span>
+            </div>
+            <div class="fn" style="top:175px;left:4px;padding:3px 5px;animation:floatA 4s ease-in-out infinite .1s">
+              <span style="font-size:9px">⚖️ Legal</span>
+            </div>
+            <div class="fn" style="top:175px;left:68px;padding:3px 5px;animation:floatB 4.2s ease-in-out infinite .2s">
+              <span style="font-size:9px">💰 Finance</span>
+            </div>
+            <div class="fn" style="top:175px;left:138px;padding:3px 5px;animation:floatA 3.9s ease-in-out infinite .3s">
+              <span style="font-size:9px">📂 General</span>
+            </div>
+            <div class="fn" style="top:175px;left:205px;padding:3px 5px;animation:floatB 4.1s ease-in-out infinite .4s">
+              <span style="font-size:9px">🖼️ Images</span>
+            </div>
+            <div class="fn" style="top:175px;right:2px;padding:3px 5px;animation:floatA 4.3s ease-in-out infinite .5s">
+              <span style="font-size:9px">+3 more</span>
+            </div>
+          </div>
+        </div>
+        <div class="pb">
+          <div class="pstat">
+            <span class="ptag">Zapier · AI Classification</span>
+            <span class="plive">Live</span>
+          </div>
+          <div class="pname">AI File Classification &amp; Auto-Routing</div>
+          <p class="pdesc">A Zapier workflow that detects every new file uploaded to Google Drive, retrieves the file metadata, sends it to AI for content analysis, then auto-routes the file into one of 7 smart folders — Contracts &amp; Legal, Finance, General, Images or Graphics, Learning &amp; Resources, Projects, or Templates — using conditional path logic.</p>
+          <div class="ptools">
+            <span class="ptool">Zapier</span>
+            <span class="ptool">Google Drive</span>
+            <span class="ptool">AI by Zapier</span>
+            <span class="ptool">Paths</span>
+          </div>
+          <div class="pflow">
+            <div class="pflow-label">Automation Flow</div>
+            <div class="pflow-steps">
+              <span class="pfs">New Drive File</span><span class="pfa">▸</span>
+              <span class="pfs">Retrieve File</span><span class="pfa">▸</span>
+              <span class="pfs">AI Analyze</span><span class="pfa">▸</span>
+              <span class="pfs">Split 7 Paths</span><span class="pfa">▸</span>
+              <span class="pfs">Move to Folder</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card: AI Receptionist -->
+      <div class="pc fu" style="transition-delay:.1s" data-drive="https://drive.google.com/drive/folders/15PD6rQr93x0Bs7j_5T2Pg-Cy_ey60byd?usp=sharing">
+        <div class="pc-drive-ripple"></div>
+        <div class="pc-drive-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Files</div>
+        <div class="pv">
+          <div class="pv-canvas">
+            <svg viewBox="0 0 340 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+              <line class="conn-line" x1="170" y1="38" x2="170" y2="68" style="animation-delay:.1s"/>
+              <line class="conn-line" x1="170" y1="68" x2="85"  y2="100" style="animation-delay:.2s"/>
+              <line class="conn-line" x1="170" y1="68" x2="170" y2="100" style="animation-delay:.3s"/>
+              <line class="conn-line" x1="170" y1="68" x2="255" y2="100" style="animation-delay:.4s"/>
+              <line class="conn-line" x1="85"  y1="120" x2="85"  y2="155" style="animation-delay:.5s"/>
+              <line class="conn-line" x1="170" y1="120" x2="170" y2="155" style="animation-delay:.6s"/>
+              <line class="conn-line" x1="255" y1="120" x2="255" y2="155" style="animation-delay:.7s"/>
+            </svg>
+            <div class="fn fn-2" style="top:10px;background:rgba(15,168,107,.08);border-color:rgba(15,168,107,.3)">
+              <div class="fn-icon" style="background:rgba(234,67,53,.2)">🔴</div><span style="color:var(--green)">n8n Webhook</span>
+            </div>
+            <div class="fn" style="top:100px;left:44px;animation:floatA 4.1s ease-in-out infinite .2s">
+              <div class="fn-icon" style="background:rgba(52,168,83,.15)">📅</div><span>Get Slots</span>
+            </div>
+            <div class="fn" style="top:100px;left:50%;transform:translateX(-50%);animation:floatBCenter 4.3s ease-in-out infinite .4s">
+              <div class="fn-icon" style="background:rgba(234,67,53,.15)">📌</div><span>Book Appt</span>
+            </div>
+            <div class="fn" style="top:100px;right:8px;animation:floatA 3.9s ease-in-out infinite .6s">
+              <div class="fn-icon" style="background:rgba(124,58,237,.15)">❌</div><span>Cancel</span>
+            </div>
+            <div class="fn" style="top:155px;left:44px;animation:floatB 4.0s ease-in-out infinite .3s">
+              <div class="fn-icon" style="background:rgba(30,136,229,.15)">📆</div><span>Google Cal</span>
+            </div>
+            <div class="fn" style="top:155px;left:50%;transform:translateX(-50%);animation:floatA 4.4s ease-in-out infinite .5s">
+              <div class="fn-icon" style="background:rgba(239,68,68,.15)">📧</div><span>Airtable Log</span>
+            </div>
+            <div class="fn" style="top:155px;right:8px;animation:floatB 4.2s ease-in-out infinite .1s">
+              <div class="fn-icon" style="background:rgba(15,168,107,.15)">✅</div><span>Respond VAP</span>
+            </div>
+          </div>
+        </div>
+        <div class="pb">
+          <div class="pstat">
+            <span class="ptag">n8n · AI Agent</span>
+            <span class="plive">Live</span>
+          </div>
+          <div class="pname">AI Receptionist</div>
+          <p class="pdesc">A multi-flow n8n AI agent that handles full appointment lifecycle management via webhook. It checks Google Calendar availability, books new appointments, processes updates, manages cancellations, and logs every interaction to Airtable — with natural language responses powered by an AI model and persistent memory across sessions.</p>
+          <div class="ptools">
+            <span class="ptool">n8n</span>
+            <span class="ptool">Webhook</span>
+            <span class="ptool">Google Calendar</span>
+            <span class="ptool">Airtable</span>
+            <span class="ptool">AI Agent</span>
+            <span class="ptool">Simple Memory</span>
+          </div>
+          <div class="pflow">
+            <div class="pflow-label">Automation Flow</div>
+            <div class="pflow-steps">
+              <span class="pfs">Webhook Trigger</span><span class="pfa">▸</span>
+              <span class="pfs">AI Route Intent</span><span class="pfa">▸</span>
+              <span class="pfs">Get / Book / Cancel</span><span class="pfa">▸</span>
+              <span class="pfs">Google Calendar</span><span class="pfa">▸</span>
+              <span class="pfs">Log + Respond</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card: AI Agent for Facebook -->
+      <div class="pc fu" style="transition-delay:.2s" data-drive="https://drive.google.com/drive/folders/15PD6rQr93x0Bs7j_5T2Pg-Cy_ey60byd?usp=sharing">
+        <div class="pc-drive-ripple"></div>
+        <div class="pc-drive-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Files</div>
+        <div class="pv">
+          <div class="pv-canvas">
+            <svg viewBox="0 0 340 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+              <line class="conn-line" x1="85"  y1="40" x2="170" y2="40" style="animation-delay:.1s"/>
+              <line class="conn-line" x1="210" y1="40" x2="210" y2="75" style="animation-delay:.2s"/>
+              <line class="conn-line" x1="210" y1="75" x2="130" y2="110" style="animation-delay:.3s"/>
+              <line class="conn-line" x1="210" y1="75" x2="210" y2="110" style="animation-delay:.4s"/>
+              <line class="conn-line" x1="130" y1="130" x2="130" y2="160" style="animation-delay:.5s"/>
+              <line class="conn-line" x1="210" y1="130" x2="210" y2="160" style="animation-delay:.6s"/>
+            </svg>
+            <div class="fn" style="top:22px;left:8px;animation:floatA 4.2s ease-in-out infinite">
+              <div class="fn-icon" style="background:rgba(24,119,242,.2)">📘</div><span>Webhook</span>
+            </div>
+            <div class="fn" style="top:22px;left:50%;transform:translateX(-50%);animation:floatBCenter 4.0s ease-in-out infinite .3s">
+              <div class="fn-icon" style="background:rgba(99,102,241,.15)">🔍</div><span>Filter</span>
+            </div>
+            <div class="fn" style="top:90px;left:90px;animation:floatA 4.3s ease-in-out infinite .2s">
+              <div class="fn-icon" style="background:rgba(234,179,8,.15)">📄</div><span>Get Doc</span>
+            </div>
+            <div class="fn" style="top:90px;left:170px;animation:floatB 3.9s ease-in-out infinite .5s">
+              <div class="fn-icon" style="background:rgba(15,168,107,.15)">🤖</div><span>AI Agent</span>
+            </div>
+            <div class="fn" style="top:158px;left:90px;animation:floatA 4.1s ease-in-out infinite .4s">
+              <div class="fn-icon" style="background:rgba(99,102,241,.15)">🧠</div><span>Gemini + Memory</span>
+            </div>
+            <div class="fn" style="top:158px;left:170px;animation:floatB 4.4s ease-in-out infinite .6s">
+              <div class="fn-icon" style="background:rgba(24,119,242,.2)">💬</div><span>HTTP Reply</span>
+            </div>
+          </div>
+        </div>
+        <div class="pb">
+          <div class="pstat">
+            <span class="ptag">n8n · Conversational AI</span>
+            <span class="plive">Live</span>
+          </div>
+          <div class="pname">AI Agent for Facebook</div>
+          <p class="pdesc">An n8n-powered conversational AI agent that listens for incoming Facebook messages via webhook, filters the relevant events, retrieves a knowledge base document, and routes the query through a Gemini-powered AI Agent with Simple Memory — delivering context-aware replies back via HTTP request to the Facebook Messenger platform.</p>
+          <div class="ptools">
+            <span class="ptool">n8n</span>
+            <span class="ptool">Webhook</span>
+            <span class="ptool">Google Gemini</span>
+            <span class="ptool">AI Agent</span>
+            <span class="ptool">Simple Memory</span>
+            <span class="ptool">HTTP Request</span>
+          </div>
+          <div class="pflow">
+            <div class="pflow-label">Automation Flow</div>
+            <div class="pflow-steps">
+              <span class="pfs">FB Webhook</span><span class="pfa">▸</span>
+              <span class="pfs">Filter</span><span class="pfa">▸</span>
+              <span class="pfs">Get Knowledge Doc</span><span class="pfa">▸</span>
+              <span class="pfs">AI Agent + Memory</span><span class="pfa">▸</span>
+              <span class="pfs">Reply via HTTP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card: n8n ASMR Creator -->
+      <div class="pc fu" style="transition-delay:.3s" data-drive="https://drive.google.com/drive/folders/15PD6rQr93x0Bs7j_5T2Pg-Cy_ey60byd?usp=sharing">
+        <div class="pc-drive-ripple"></div>
+        <div class="pc-drive-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Files</div>
+        <div class="pv">
+          <div class="pv-canvas">
+            <svg viewBox="0 0 340 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+              <line class="conn-line" x1="30"  y1="40" x2="68"  y2="40" style="animation-delay:.05s"/>
+              <line class="conn-line" x1="100" y1="40" x2="138" y2="40" style="animation-delay:.1s"/>
+              <line class="conn-line" x1="170" y1="40" x2="208" y2="40" style="animation-delay:.15s"/>
+              <line class="conn-line" x1="240" y1="40" x2="278" y2="40" style="animation-delay:.2s"/>
+              <line class="conn-line" x1="310" y1="40" x2="310" y2="80" style="animation-delay:.25s"/>
+              <line class="conn-line" x1="310" y1="80" x2="240" y2="115" style="animation-delay:.3s"/>
+              <line class="conn-line" x1="240" y1="135" x2="170" y2="160" style="animation-delay:.4s"/>
+              <line class="conn-line" x1="240" y1="135" x2="310" y2="160" style="animation-delay:.5s"/>
+            </svg>
+            <div class="fn" style="top:22px;left:2px;padding:4px 6px;animation:floatA 4.2s ease-in-out infinite">
+              <div class="fn-icon" style="background:rgba(15,168,107,.15);font-size:9px">⏱️</div><span style="font-size:9px">Schedule</span>
+            </div>
+            <div class="fn" style="top:22px;left:68px;padding:4px 6px;animation:floatB 3.9s ease-in-out infinite .2s">
+              <div class="fn-icon" style="background:rgba(99,102,241,.15);font-size:9px">✍️</div><span style="font-size:9px">Gen Script</span>
+            </div>
+            <div class="fn" style="top:22px;left:138px;padding:4px 6px;animation:floatA 4.4s ease-in-out infinite .4s">
+              <div class="fn-icon" style="background:rgba(234,67,53,.15);font-size:9px">🎤</div><span style="font-size:9px">TTS Audio</span>
+            </div>
+            <div class="fn" style="top:22px;left:208px;padding:4px 6px;animation:floatB 4.0s ease-in-out infinite .3s">
+              <div class="fn-icon" style="background:rgba(124,58,237,.15);font-size:9px">🎬</div><span style="font-size:9px">Gen Video</span>
+            </div>
+            <div class="fn" style="top:22px;right:2px;padding:4px 6px;animation:floatA 4.3s ease-in-out infinite .5s">
+              <div class="fn-icon" style="background:rgba(234,179,8,.15);font-size:9px">🔊</div><span style="font-size:9px">Merge A/V</span>
+            </div>
+            <div class="fn" style="top:100px;right:2px;padding:4px 6px;animation:floatB 4.1s ease-in-out infinite .4s">
+              <div class="fn-icon" style="background:rgba(239,68,68,.15);font-size:9px">✂️</div><span style="font-size:9px">InVideo Edit</span>
+            </div>
+            <div class="fn" style="top:155px;left:130px;padding:4px 6px;animation:floatA 3.8s ease-in-out infinite .6s">
+              <div class="fn-icon" style="background:rgba(24,119,242,.2);font-size:9px">📘</div><span style="font-size:9px">Facebook</span>
+            </div>
+            <div class="fn" style="top:155px;right:2px;padding:4px 6px;animation:floatB 4.2s ease-in-out infinite .2s">
+              <div class="fn-icon" style="background:rgba(234,67,53,.2);font-size:9px">▶️</div><span style="font-size:9px">YouTube</span>
+            </div>
+          </div>
+        </div>
+        <div class="pb">
+          <div class="pstat">
+            <span class="ptag">n8n · AI Video Creator</span>
+            <span class="plive">Live</span>
+          </div>
+          <div class="pname">Video Creator</div>
+          <p class="pdesc">A fully automated n8n pipeline that runs on a schedule to create and publish ASMR videos end-to-end. It generates a script with AI, converts it to audio via TTS, produces a video, merges the audio and visuals, processes the final cut through InVideo, then auto-publishes directly to both Facebook and YouTube — zero manual effort.</p>
+          <div class="ptools">
+            <span class="ptool">n8n</span>
+            <span class="ptool">AI Script Gen</span>
+            <span class="ptool">TTS</span>
+            <span class="ptool">InVideo</span>
+            <span class="ptool">Facebook API</span>
+            <span class="ptool">YouTube API</span>
+          </div>
+          <div class="pflow">
+            <div class="pflow-label">Automation Flow</div>
+            <div class="pflow-steps">
+              <span class="pfs">Schedule Trigger</span><span class="pfa">▸</span>
+              <span class="pfs">AI Script</span><span class="pfa">▸</span>
+              <span class="pfs">TTS + Video Gen</span><span class="pfa">▸</span>
+              <span class="pfs">Merge &amp; Edit</span><span class="pfa">▸</span>
+              <span class="pfs">FB + YouTube</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card: Wedding Invitation Website -->
+      <div class="pc fu" style="transition-delay:.1s" data-drive="https://drive.google.com/drive/folders/1SV9rBrhCVVKpsKws0sA-9g0uZjTw8i84?usp=sharing">
+        <div class="pc-drive-ripple"></div>
+        <div class="pc-drive-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Files</div>
+        <div class="pv">
+          <div class="pv-canvas">
+            <svg viewBox="0 0 340 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+              <line class="conn-line" x1="170" y1="38" x2="80"  y2="75" style="animation-delay:.1s"/>
+              <line class="conn-line" x1="170" y1="38" x2="170" y2="75" style="animation-delay:.2s"/>
+              <line class="conn-line" x1="170" y1="38" x2="260" y2="75" style="animation-delay:.3s"/>
+              <line class="conn-line" x1="80"  y1="95" x2="80"  y2="130" style="animation-delay:.4s"/>
+              <line class="conn-line" x1="170" y1="95" x2="170" y2="130" style="animation-delay:.5s"/>
+              <line class="conn-line" x1="260" y1="95" x2="260" y2="130" style="animation-delay:.6s"/>
+            </svg>
+            <div class="fn fn-2" style="top:10px;background:rgba(201,169,110,.08);border-color:rgba(201,169,110,.4)">
+              <div class="fn-icon" style="background:rgba(201,169,110,.2)">💍</div>
+              <span style="color:#c9a96e">K & C Wedding</span>
+            </div>
+            <div class="fn" style="top:75px;left:28px;animation:floatA 4.1s ease-in-out infinite .2s">
+              <div class="fn-icon" style="background:rgba(155,193,218,.2)">⏱️</div><span>Countdown</span>
+            </div>
+            <div class="fn" style="top:75px;left:50%;transform:translateX(-50%);animation:floatBCenter 4.3s ease-in-out infinite .4s">
+              <div class="fn-icon" style="background:rgba(155,193,218,.2)">🖼️</div><span>Gallery</span>
+            </div>
+            <div class="fn" style="top:75px;right:8px;animation:floatA 3.9s ease-in-out infinite .6s">
+              <div class="fn-icon" style="background:rgba(155,193,218,.2)">👥</div><span>Entourage</span>
+            </div>
+            <div class="fn" style="top:130px;left:28px;animation:floatB 4s ease-in-out infinite .3s">
+              <div class="fn-icon" style="background:rgba(15,168,107,.15)">✨</div><span>CSS Animations</span>
+            </div>
+            <div class="fn" style="top:130px;left:50%;transform:translateX(-50%);animation:floatA 4.2s ease-in-out infinite .5s">
+              <div class="fn-icon" style="background:rgba(66,133,244,.15)">📱</div><span>Responsive</span>
+            </div>
+            <div class="fn" style="top:130px;right:8px;animation:floatB 4.4s ease-in-out infinite .1s">
+              <div class="fn-icon" style="background:rgba(239,68,68,.15)">🚀</div><span>GitHub Pages</span>
+            </div>
+          </div>
+        </div>
+        <div class="pb">
+          <div class="pstat">
+            <span class="ptag">Vanilla JS · Web Dev</span>
+            <span class="plive">Live</span>
+          </div>
+          <div class="pname">Wedding Invitation Website</div>
+          <p class="pdesc">A cinematic single-page wedding invitation for King Rommel &amp; Connie Angela (May 23, 2026). Built with 100% vanilla HTML/CSS/JS — no frameworks — featuring a live countdown timer, animated floating petals, a scrolling photo gallery, sponsor accordions, entourage listing, and full SPA panel navigation with curtain transitions.</p>
+          <div class="ptools">
+            <span class="ptool">HTML5</span>
+            <span class="ptool">CSS3 Animations</span>
+            <span class="ptool">Vanilla JS</span>
+            <span class="ptool">Google Fonts</span>
+            <span class="ptool">GitHub Pages</span>
+          </div>
+          <div class="pflow">
+            <div class="pflow-label">Key Features</div>
+            <div class="pflow-steps">
+              <span class="pfs">Loading Screen</span><span class="pfa">▸</span>
+              <span class="pfs">Live Countdown</span><span class="pfa">▸</span>
+              <span class="pfs">Gallery Marquee</span><span class="pfa">▸</span>
+              <span class="pfs">Sponsors</span><span class="pfa">▸</span>
+              <span class="pfs">Entourage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card: Lucky Store POS -->
+      <div class="pc fu" style="transition-delay:.2s" data-drive="https://drive.google.com/drive/folders/1H_ksoNnPsTtClVrj-O_DgxTsmML2xQ3F?usp=sharing">
+        <div class="pc-drive-ripple"></div>
+        <div class="pc-drive-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Files</div>
+        <div class="pv">
+          <div class="pv-canvas">
+            <svg viewBox="0 0 340 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+              <line class="conn-line" x1="85"  y1="40" x2="85"  y2="75" style="animation-delay:.1s"/>
+              <line class="conn-line" x1="255" y1="40" x2="255" y2="75" style="animation-delay:.2s"/>
+              <line class="conn-line" x1="85"  y1="95" x2="170" y2="120" style="animation-delay:.3s"/>
+              <line class="conn-line" x1="255" y1="95" x2="170" y2="120" style="animation-delay:.4s"/>
+              <line class="conn-line" x1="170" y1="140" x2="85"  y2="168" style="animation-delay:.5s"/>
+              <line class="conn-line" x1="170" y1="140" x2="255" y2="168" style="animation-delay:.6s"/>
+            </svg>
+            <div class="fn" style="top:22px;left:28px;animation:floatA 4.2s ease-in-out infinite">
+              <div class="fn-icon" style="background:rgba(239,68,68,.2)">🛒</div><span>POS Screen</span>
+            </div>
+            <div class="fn" style="top:22px;right:8px;animation:floatB 4.0s ease-in-out infinite .3s">
+              <div class="fn-icon" style="background:rgba(234,179,8,.2)">⚙️</div><span>Admin Panel</span>
+            </div>
+            <div class="fn" style="top:75px;left:28px;animation:floatB 4.3s ease-in-out infinite .2s">
+              <div class="fn-icon" style="background:rgba(52,168,83,.15)">📦</div><span>Inventory</span>
+            </div>
+            <div class="fn" style="top:75px;right:8px;animation:floatA 3.9s ease-in-out infinite .5s">
+              <div class="fn-icon" style="background:rgba(66,133,244,.15)">📊</div><span>Sales Reports</span>
+            </div>
+            <div class="fn fn-2" style="top:120px;background:rgba(15,168,107,.08);border-color:rgba(15,168,107,.3)">
+              <div class="fn-icon" style="background:rgba(15,168,107,.2)">🗄️</div>
+              <span style="color:var(--green)">IndexedDB · Offline</span>
+            </div>
+            <div class="fn" style="top:168px;left:28px;animation:floatA 4.1s ease-in-out infinite .4s">
+              <div class="fn-icon" style="background:rgba(99,102,241,.15)">🖨️</div><span>Receipts</span>
+            </div>
+            <div class="fn" style="top:168px;right:8px;animation:floatB 4.3s ease-in-out infinite .6s">
+              <div class="fn-icon" style="background:rgba(234,67,53,.15)">👤</div><span>PIN Auth</span>
+            </div>
+          </div>
+        </div>
+        <div class="pb">
+          <div class="pstat">
+            <span class="ptag">React · PWA · Offline</span>
+            <span class="plive">Live</span>
+          </div>
+          <div class="pname">Lucky Store POS</div>
+          <p class="pdesc">A touch-friendly offline-capable Point of Sale PWA designed for Filipino sari-sari stores. Features PIN-based Admin/Cashier roles, a tap-to-add product grid, cart with auto change calculation, thermal receipt printing, full inventory management with dated logs, sales reports, and 100% offline operation via IndexedDB and a service worker.</p>
+          <div class="ptools">
+            <span class="ptool">React 18</span>
+            <span class="ptool">TypeScript</span>
+            <span class="ptool">Vite</span>
+            <span class="ptool">Tailwind CSS</span>
+            <span class="ptool">IndexedDB</span>
+            <span class="ptool">PWA</span>
+            <span class="ptool">shadcn/ui</span>
+          </div>
+          <div class="pflow">
+            <div class="pflow-label">App Flow</div>
+            <div class="pflow-steps">
+              <span class="pfs">PIN Sign-In</span><span class="pfa">▸</span>
+              <span class="pfs">Product Grid</span><span class="pfa">▸</span>
+              <span class="pfs">Cart + Checkout</span><span class="pfa">▸</span>
+              <span class="pfs">Receipt</span><span class="pfa">▸</span>
+              <span class="pfs">Inventory Log</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card: DepEd Grading System -->
+      <div class="pc fu" style="transition-delay:.3s" data-drive="https://drive.google.com/drive/folders/1aNsfIOSyorOvbxjof8Cp0Q7F2GayLxPf?usp=sharing">
+        <div class="pc-drive-ripple"></div>
+        <div class="pc-drive-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>View Files</div>
+        <div class="pv">
+          <div class="pv-canvas">
+            <svg viewBox="0 0 340 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+              <line class="conn-line" x1="170" y1="38" x2="170" y2="68" style="animation-delay:.1s"/>
+              <line class="conn-line" x1="170" y1="68" x2="55"  y2="105" style="animation-delay:.2s"/>
+              <line class="conn-line" x1="170" y1="68" x2="170" y2="105" style="animation-delay:.3s"/>
+              <line class="conn-line" x1="170" y1="68" x2="285" y2="105" style="animation-delay:.4s"/>
+              <line class="conn-line" x1="55"  y1="125" x2="55"  y2="158" style="animation-delay:.5s"/>
+              <line class="conn-line" x1="170" y1="125" x2="170" y2="158" style="animation-delay:.6s"/>
+              <line class="conn-line" x1="285" y1="125" x2="285" y2="158" style="animation-delay:.7s"/>
+            </svg>
+            <div class="fn fn-2" style="top:10px;background:rgba(66,133,244,.08);border-color:rgba(66,133,244,.4)">
+              <div class="fn-icon" style="background:rgba(66,133,244,.2)">🏫</div>
+              <span style="color:#4285f4">DepEd K-12 Grading</span>
+            </div>
+            <div class="fn fn-2" style="top:68px">
+              <div class="fn-icon" style="background:rgba(234,179,8,.15)">🔑</div><span>Role-Based Login</span>
+            </div>
+            <div class="fn" style="top:105px;left:8px;animation:floatA 4.1s ease-in-out infinite .2s">
+              <div class="fn-icon" style="background:rgba(52,168,83,.15)">👨‍🎓</div><span>Students</span>
+            </div>
+            <div class="fn" style="top:105px;left:50%;transform:translateX(-50%);animation:floatBCenter 4.3s ease-in-out infinite .4s">
+              <div class="fn-icon" style="background:rgba(99,102,241,.15)">📝</div><span>Grade Input</span>
+            </div>
+            <div class="fn" style="top:105px;right:8px;animation:floatA 3.9s ease-in-out infinite .6s">
+              <div class="fn-icon" style="background:rgba(239,68,68,.15)">👤</div><span>User Mgmt</span>
+            </div>
+            <div class="fn" style="top:158px;left:8px;animation:floatB 4.0s ease-in-out infinite .3s">
+              <div class="fn-icon" style="background:rgba(15,168,107,.15)">📊</div><span>Auto Finals</span>
+            </div>
+            <div class="fn" style="top:158px;left:50%;transform:translateX(-50%);animation:floatA 4.2s ease-in-out infinite .5s">
+              <div class="fn-icon" style="background:rgba(52,168,83,.2)">📤</div><span>Excel Export</span>
+            </div>
+            <div class="fn" style="top:158px;right:8px;animation:floatB 4.4s ease-in-out infinite .1s">
+              <div class="fn-icon" style="background:rgba(66,133,244,.15)">🗄️</div><span>Offline DB</span>
+            </div>
+          </div>
+        </div>
+        <div class="pb">
+          <div class="pstat">
+            <span class="ptag">React · Offline-First · DepEd</span>
+            <span class="plive">Live</span>
+          </div>
+          <div class="pname">DepEd K-12 Grading System</div>
+          <p class="pdesc">An offline-first grading system for Filipino K-12 teachers. Supports Admin and Teacher roles with bcrypt-secured logins, per-quarter grade entry with auto-computed finals and Pass/Fail remarks, bulk CSV student import, subject access control per teacher, and DepEd-formatted Excel export — all running locally in IndexedDB with no internet required.</p>
+          <div class="ptools">
+            <span class="ptool">React 18</span>
+            <span class="ptool">TypeScript</span>
+            <span class="ptool">Dexie.js</span>
+            <span class="ptool">Tailwind CSS</span>
+            <span class="ptool">shadcn/ui</span>
+            <span class="ptool">SheetJS</span>
+            <span class="ptool">bcrypt.js</span>
+          </div>
+          <div class="pflow">
+            <div class="pflow-label">App Flow</div>
+            <div class="pflow-steps">
+              <span class="pfs">Setup Wizard</span><span class="pfa">▸</span>
+              <span class="pfs">Add Students</span><span class="pfa">▸</span>
+              <span class="pfs">Enter Q1–Q4</span><span class="pfa">▸</span>
+              <span class="pfs">Auto Finals</span><span class="pfa">▸</span>
+              <span class="pfs">Export .xlsx</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placeholder card for future project -->
+      <div class="pc fu" style="transition-delay:.15s;opacity:.55;border-style:dashed">
+        <div class="pv" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px">
+          <div style="width:48px;height:48px;border-radius:50%;border:.5px dashed rgba(15,168,107,.4);display:flex;align-items:center;justify-content:center;font-size:22px;animation:bka 2s ease-in-out infinite">+</div>
+          <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">More coming soon</div>
+        </div>
+        <div class="pb">
+          <div class="pstat"><span class="ptag" style="opacity:.5">In Progress</span></div>
+          <div class="pname" style="color:var(--text2)">Next Project</div>
+          <p class="pdesc">Currently building the next automation workflow. Check back soon or reach out to discuss a custom project.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="con">
+    <div class="stg fu">Credentials</div>
+    <h2 class="sh fu"><em>Certifications</em></h2>
+    <div class="cg">
+      <div class="cer fu"><div class="ci">🖥️</div><div class="cn">Computer Servicing NC II</div></div>
+      <div class="cer fu" style="transition-delay:.05s"><div class="ci">📊</div><div class="cn">Google Data Analytics</div></div>
+      <div class="cer fu" style="transition-delay:.1s"><div class="ci">⚙️</div><div class="cn">ServiceNow System Administrator</div></div>
+      <div class="cer fu" style="transition-delay:.15s"><div class="ci">🔐</div><div class="cn">Security with AWS: Identity and Access Management</div></div>
+      <div class="cer fu" style="transition-delay:.2s"><div class="ci">☁️</div><div class="cn">Service Directory — Qwikstart</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="con">
+    <div class="cc fu">
+      <div class="ccg"></div>
+      <h2>Let's work <em style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--green)">together</em></h2>
+      <p>Whether you need AI workflows, cloud support, or technical operations — I'm open to new projects and collaborations.</p>
+      <div class="cls">
+        <a href="https://mail.google.com/mail/?view=cm&to=krammendoza05%40gmail.com&su=Project%20Inquiry%20from%20Portfolio&body=Hi%20Mark%2C%0A%0AI%20found%20your%20portfolio%20and%20would%20love%20to%20discuss%20a%20project%20with%20you.%0A%0AHere%27s%20a%20brief%20overview%20of%20what%20I%20need%3A%0A" target="_blank" rel="noopener" class="cl">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Send an Email
+        </a>
+        <a href="tel:+639616053121" class="cl">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.61 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.61a16 16 0 006.29 6.29l.96-.96a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          0961-605-3121
+        </a>
+        <a href="https://calendar.google.com/calendar/r/eventedit?text=30-Min+Discovery+Call+with+Mark+Wilson&details=Looking+forward+to+discussing+your+AI+automation+needs.+A+Google+Meet+link+will+be+shared+upon+confirmation.&duration=30&add=krammendoza05%40gmail.com" target="_blank" rel="noopener" class="cl cl-meet">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Schedule 30-Min Call
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>Mark Wilson D. Mendoza</span>. All rights reserved.</p>
+  <p>Tanauan City, Batangas, Philippines</p>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════
+//  GALAXY SOLAR SYSTEM
+// ═══════════════════════════════════════════════
+(function(){
+  const canvas = document.getElementById('gc');
+  const ctx = canvas.getContext('2d');
+  const tip  = document.getElementById('stip');
+  const tname= document.getElementById('sname');
+  const tcat = document.getElementById('scat');
+  let W,H,CX,CY, mouse={x:-999,y:-999};
+
+  function resize(){
+    const ow=canvas.offsetWidth, oh=canvas.offsetHeight;
+    if(!ow||!oh||!isFinite(ow)||!isFinite(oh)) return;
+    W=canvas.width=ow;
+    H=canvas.height=oh;
+    CX=W*0.65; CY=H*0.5;
+  }
+  resize();
+  window.addEventListener('resize',resize);
+
+  const RR=[0,72,118,170,226,290];
+
+  const TOOLS=[
+    {label:'ChatGPT',    emoji:'🤖',ring:1,a:0.00,spd:1.30,col:'#10a37f',cat:'AI Model'},
+    {label:'Claude AI',  emoji:'🧩',ring:1,a:2.09,spd:1.30,col:'#d97757',cat:'AI Model'},
+    {label:'Gemini',     emoji:'✨',ring:1,a:4.19,spd:1.30,col:'#4285f4',cat:'AI Model'},
+    {label:'Zapier',     emoji:'⚡',ring:2,a:0.30,spd:0.88,col:'#ff6b35',cat:'Automation'},
+    {label:'Make.com',   emoji:'🔗',ring:2,a:1.56,spd:0.88,col:'#7c3aed',cat:'Automation'},
+    {label:'n8n',        emoji:'🔀',ring:2,a:2.82,spd:0.88,col:'#e74c3c',cat:'Automation'},
+    {label:'Webhooks',   emoji:'🪝',ring:2,a:4.08,spd:0.88,col:'#f59e0b',cat:'Automation'},
+    {label:'Lovable',    emoji:'💜',ring:2,a:5.34,spd:0.88,col:'#a855f7',cat:'Dev Tools'},
+    {label:'HubSpot',    emoji:'🎯',ring:3,a:0.10,spd:0.58,col:'#ff7a59',cat:'CRM'},
+    {label:'GoHighLevel',emoji:'🚀',ring:3,a:0.99,spd:0.58,col:'#00c896',cat:'CRM'},
+    {label:'Airtable',   emoji:'📊',ring:3,a:1.88,spd:0.58,col:'#fcb400',cat:'Productivity'},
+    {label:'Notion',     emoji:'📝',ring:3,a:2.77,spd:0.58,col:'#e0e0e0',cat:'Productivity'},
+    {label:'Asana',      emoji:'📋',ring:3,a:3.66,spd:0.58,col:'#f06a6a',cat:'Productivity'},
+    {label:'Grok (xAI)', emoji:'🌪️',ring:3,a:4.55,spd:0.58,col:'#60a5fa',cat:'AI Model'},
+    {label:'Perplexity', emoji:'🔍',ring:3,a:5.44,spd:0.58,col:'#20b2aa',cat:'AI Model'},
+    {label:'GitHub',     emoji:'🐙',ring:4,a:0.20,spd:0.38,col:'#8b5cf6',cat:'Dev Tools'},
+    {label:'Vercel',     emoji:'▲', ring:4,a:1.00,spd:0.38,col:'#c8c8c8',cat:'Dev Tools'},
+    {label:'Supabase',   emoji:'💚',ring:4,a:1.80,spd:0.38,col:'#3ecf8e',cat:'Dev Tools'},
+    {label:'Figma',      emoji:'🎨',ring:4,a:2.60,spd:0.38,col:'#a259ff',cat:'Design'},
+    {label:'Discord',    emoji:'💬',ring:4,a:3.40,spd:0.38,col:'#5865f2',cat:'Comms'},
+    {label:'Slack',      emoji:'📢',ring:4,a:4.20,spd:0.38,col:'#e01e5a',cat:'Comms'},
+    {label:'Telegram',   emoji:'✈️',ring:4,a:5.00,spd:0.38,col:'#0088cc',cat:'Comms'},
+    {label:'Stripe',     emoji:'💳',ring:4,a:5.80,spd:0.38,col:'#635bff',cat:'Payments'},
+    {label:'Gmail',      emoji:'📧',ring:5,a:0.40,spd:0.24,col:'#ea4335',cat:'Google'},
+    {label:'Google Docs',emoji:'📄',ring:5,a:1.45,spd:0.24,col:'#4285f4',cat:'Google'},
+    {label:'Goog Sheets',emoji:'📗',ring:5,a:2.50,spd:0.24,col:'#34a853',cat:'Google'},
+    {label:'Google Cal', emoji:'📅',ring:5,a:3.55,spd:0.24,col:'#1a73e8',cat:'Google'},
+    {label:'Shopify',    emoji:'🛍️',ring:5,a:4.60,spd:0.24,col:'#95bf47',cat:'E-commerce'},
+    {label:'WordPress',  emoji:'🌐',ring:5,a:5.65,spd:0.24,col:'#21759b',cat:'Web'},
+  ];
+
+  const STARS=Array.from({length:500},()=>({
+    x:Math.random(),y:Math.random(),
+    r:Math.random()*1.4+0.3,
+    op:Math.random()*0.8+0.15,
+    ts:Math.random()*0.006+0.002,
+    to:Math.random()*Math.PI*2
+  }));
+
+  const NEBS=[
+    {x:.68,y:.26,rx:260,ry:130,c:'rgba(110,30,240,',o:.20},
+    {x:.88,y:.65,rx:200,ry:115,c:'rgba(15,200,120,',o:.16},
+    {x:.54,y:.78,rx:270,ry:105,c:'rgba(40,80,240,', o:.13},
+    {x:.80,y:.16,rx:160,ry:165,c:'rgba(200,40,110,',o:.13},
+    {x:.92,y:.42,rx:145,ry:200,c:'rgba(20,130,220,',o:.11},
+  ];
+
+  const ASTS=Array.from({length:70},(_,i)=>({
+    a:(i/70)*Math.PI*2+(Math.random()-.5)*.15,
+    r:195+(Math.random()-.5)*16,
+    sz:Math.random()*1.6+0.4,
+    op:Math.random()*.45+.18
+  }));
+
+  let comet={x:-100,y:200,vx:4,vy:.6,life:0},cT=0;
+  const shoots=[]; let sT=0;
+  let hov=null,t=0;
+
+  function drawNeb(n){
+    const gx=n.x*W,gy=n.y*H;
+    const maxR=Math.max(n.rx,n.ry);
+    const scaleRatio=n.ry/n.rx;
+    if(!isFinite(gx)||!isFinite(gy)||!isFinite(maxR)||!isFinite(scaleRatio)||maxR<=0) return;
+    const g=ctx.createRadialGradient(gx,gy,0,gx,gy,maxR);
+    g.addColorStop(0,n.c+n.o+')');
+    g.addColorStop(.5,n.c+(n.o*.4)+')');
+    g.addColorStop(1,n.c+'0)');
+    ctx.save();ctx.scale(1,scaleRatio);
+    ctx.beginPath();ctx.arc(gx,gy*(n.rx/n.ry),n.rx,0,Math.PI*2);
+    ctx.fillStyle=g;ctx.fill();ctx.restore();
+  }
+
+  function drawBrain(){
+    const p=Math.sin(t*.04)*4;
+    for(let i=5;i>0;i--){
+      const g=ctx.createRadialGradient(CX,CY,0,CX,CY,55+i*17+p*2);
+      g.addColorStop(0,'rgba(15,200,120,0)');
+      g.addColorStop(.4,'rgba(15,180,100,'+(0.06+i*.01)+')');
+      g.addColorStop(1,'rgba(15,168,107,0)');
+      ctx.beginPath();ctx.arc(CX,CY,55+i*17+p*2,0,Math.PI*2);
+      ctx.fillStyle=g;ctx.fill();
+    }
+    const sg=ctx.createRadialGradient(CX,CY,0,CX,CY,50+p*2);
+    sg.addColorStop(0,'rgba(240,255,245,1)');
+    sg.addColorStop(.25,'rgba(60,255,160,.9)');
+    sg.addColorStop(.55,'rgba(15,200,110,.5)');
+    sg.addColorStop(1,'rgba(5,80,50,0)');
+    ctx.beginPath();ctx.arc(CX,CY,50+p*2,0,Math.PI*2);
+    ctx.fillStyle=sg;ctx.fill();
+    ctx.save();
+    ctx.font=(32+Math.round(p))+'px serif';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.shadowColor='rgba(60,255,160,1)';ctx.shadowBlur=28+p*5;
+    ctx.fillText('🧠',CX,CY);ctx.restore();
+    ctx.save();
+    ctx.font='700 12px "DM Sans",sans-serif';
+    ctx.textAlign='center';
+    ctx.fillStyle='rgba(180,255,220,.85)';
+    ctx.shadowColor='rgba(0,0,0,.9)';ctx.shadowBlur=6;
+    ctx.fillText('AI Core',CX,CY+48);ctx.restore();
+  }
+
+  function drawPlanet(tool,px,py,isH){
+    const sz=isH?21:14;
+    const g2=ctx.createRadialGradient(px,py,0,px,py,sz+24);
+    g2.addColorStop(0,tool.col+'66');
+    g2.addColorStop(.5,tool.col+'22');
+    g2.addColorStop(1,tool.col+'00');
+    ctx.beginPath();ctx.arc(px,py,sz+24,0,Math.PI*2);ctx.fillStyle=g2;ctx.fill();
+    const g=ctx.createRadialGradient(px,py,0,px,py,sz+7);
+    g.addColorStop(0,tool.col+'ff');
+    g.addColorStop(.5,tool.col+'88');
+    g.addColorStop(1,tool.col+'00');
+    ctx.beginPath();ctx.arc(px,py,sz+7,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+    ctx.beginPath();ctx.arc(px,py,sz,0,Math.PI*2);
+    ctx.fillStyle=tool.col+'44';
+    ctx.strokeStyle=isH?tool.col+'ff':tool.col+'cc';
+    ctx.lineWidth=isH?2.5:1.8;ctx.fill();ctx.stroke();
+    ctx.save();
+    ctx.font=(sz+2)+'px serif';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.shadowColor=tool.col;ctx.shadowBlur=isH?22:14;
+    ctx.fillText(tool.emoji,px,py);ctx.restore();
+    ctx.save();
+    ctx.font=isH?'600 12px "DM Sans",sans-serif':'500 10px "DM Sans",sans-serif';
+    ctx.textAlign='center';
+    ctx.fillStyle=isH?'#fff':'rgba(255,255,255,.82)';
+    ctx.shadowColor='rgba(0,0,0,1)';ctx.shadowBlur=7;
+    ctx.fillText(tool.label,px,py+sz+15);ctx.restore();
+  }
+
+  function draw(){
+    if(!W||!H||!isFinite(CX)||!isFinite(CY)){requestAnimationFrame(draw);return;}
+    ctx.clearRect(0,0,W,H);
+    const bg=ctx.createRadialGradient(CX,CY,0,CX,CY,Math.max(W,H));
+    bg.addColorStop(0,'#0e0e38');bg.addColorStop(.4,'#080822');bg.addColorStop(1,'#04040f');
+    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    ctx.save();ctx.rotate(-.18);
+    const mw=ctx.createLinearGradient(0,H*.3,W,H*.7);
+    mw.addColorStop(0,'rgba(100,70,180,0)');
+    mw.addColorStop(.4,'rgba(90,65,160,.14)');
+    mw.addColorStop(.5,'rgba(110,80,200,.20)');
+    mw.addColorStop(.6,'rgba(90,65,160,.14)');
+    mw.addColorStop(1,'rgba(100,70,180,0)');
+    ctx.fillStyle=mw;ctx.fillRect(-W*.2,-H*.2,W*1.4,H*1.4);ctx.restore();
+    NEBS.forEach(drawNeb);
+    STARS.forEach(s=>{
+      const tw=Math.sin(t*s.ts*60+s.to);
+      ctx.beginPath();ctx.arc(s.x*W,s.y*H,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,255,255,${s.op*(.7+.3*tw)})`;ctx.fill();
+    });
+    for(let i=shoots.length-1;i>=0;i--){
+      const s=shoots[i];
+      const ex=s.x+Math.cos(s.a)*s.l*s.li,ey=s.y+Math.sin(s.a)*s.l*s.li;
+      const sg=ctx.createLinearGradient(s.x,s.y,ex,ey);
+      sg.addColorStop(0,'rgba(255,255,255,0)');
+      sg.addColorStop(1,`rgba(255,255,255,${s.li*.85})`);
+      ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(ex,ey);
+      ctx.strokeStyle=sg;ctx.lineWidth=1.5*s.li;ctx.stroke();
+      s.x+=Math.cos(s.a)*s.sp;s.y+=Math.sin(s.a)*s.sp;s.li-=.022;
+      if(s.li<=0)shoots.splice(i,1);
+    }
+    if(++sT>220+Math.random()*280){
+      shoots.push({x:Math.random()*W*.85,y:Math.random()*H*.35,l:80+Math.random()*70,a:Math.PI/5+Math.random()*.3,sp:9+Math.random()*5,li:1});
+      sT=0;
+    }
+    if(comet.life>0){
+      const sp=Math.hypot(comet.vx,comet.vy),tl=90;
+      const cg=ctx.createLinearGradient(comet.x,comet.y,comet.x-comet.vx/sp*tl,comet.y-comet.vy/sp*tl);
+      cg.addColorStop(0,'rgba(220,245,255,.9)');cg.addColorStop(1,'rgba(220,245,255,0)');
+      ctx.save();
+      ctx.beginPath();ctx.moveTo(comet.x,comet.y);
+      ctx.lineTo(comet.x-comet.vx/sp*tl,comet.y-comet.vy/sp*tl);
+      ctx.strokeStyle=cg;ctx.lineWidth=2*comet.life;ctx.stroke();
+      ctx.beginPath();ctx.arc(comet.x,comet.y,2.5*comet.life,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,255,255,${.9*comet.life})`;ctx.fill();
+      ctx.restore();
+      comet.x+=comet.vx;comet.y+=comet.vy;comet.life-=.007;
+    }
+    if(++cT>460){
+      comet={x:-90,y:Math.random()*H*.5+H*.1,vx:3.5+Math.random()*2,vy:.3+Math.random()*.9,life:1};cT=0;
+    }
+    for(let i=1;i<=5;i++){
+      ctx.beginPath();ctx.arc(CX,CY,RR[i],0,Math.PI*2);
+      ctx.strokeStyle='rgba(120,160,255,.13)';ctx.lineWidth=1;ctx.stroke();
+    }
+    ctx.beginPath();ctx.arc(CX,CY,195,0,Math.PI*2);
+    ctx.strokeStyle='rgba(255,255,255,.025)';ctx.lineWidth=16;ctx.stroke();
+    ASTS.forEach(a=>{
+      const ax=CX+Math.cos(a.a+t*.0022)*a.r;
+      const ay=CY+Math.sin(a.a+t*.0022)*a.r;
+      ctx.beginPath();ctx.arc(ax,ay,a.sz,0,Math.PI*2);
+      ctx.fillStyle=`rgba(180,160,140,${a.op})`;ctx.fill();
+    });
+    const mi={x:(mouse.x-CX)/W,y:(mouse.y-CY)/H};
+    hov=null;
+    const pos=TOOLS.map((tool,i)=>{
+      tool.a+=0.0038*tool.spd*(1+Math.sin(t*.009+i)*.07);
+      const ox=mi.x*(RR[tool.ring]*.012);
+      const oy=mi.y*(RR[tool.ring]*.012);
+      const px=CX+Math.cos(tool.a)*RR[tool.ring]+ox;
+      const py=CY+Math.sin(tool.a)*RR[tool.ring]+oy;
+      if(Math.hypot(mouse.x-px,mouse.y-py)<22) hov=i;
+      return {px,py};
+    });
+    TOOLS.forEach((tool,i)=>{
+      const{px,py}=pos[i],isH=i===hov;
+      ctx.save();
+      ctx.beginPath();ctx.moveTo(CX,CY);ctx.lineTo(px,py);
+      ctx.strokeStyle=isH?tool.col+'88':tool.col+'28';
+      ctx.lineWidth=isH?1.5:.7;
+      ctx.setLineDash([3,9]);ctx.stroke();ctx.setLineDash([]);
+      ctx.restore();
+    });
+    TOOLS.forEach((tool,i)=>{
+      const{px,py}=pos[i];
+      drawPlanet(tool,px,py,i===hov);
+    });
+    drawBrain();
+    if(hov!==null){
+      const tool=TOOLS[hov];
+      tname.textContent=tool.emoji+' '+tool.label;
+      tcat.textContent=tool.cat;
+      tip.style.opacity='1';
+      let tx=mouse.x+20,ty=mouse.y-44;
+      if(tx+200>W) tx=mouse.x-215;
+      if(ty<10) ty=mouse.y+18;
+      tip.style.left=tx+'px';tip.style.top=ty+'px';
+    } else {
+      tip.style.opacity='0';
+    }
+    t++;
+    requestAnimationFrame(draw);
+  }
+  draw();
+  document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+})();
+
+// ── CURSOR ──
+const cd=document.getElementById('cd'),cr=document.getElementById('cr'),cg=document.getElementById('cg');
+let mx=0,my=0,rx=0,ry=0,gx=0,gy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px';});
+(function a(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;cr.style.left=rx+'px';cr.style.top=ry+'px';gx+=(mx-gx)*.065;gy+=(my-gy)*.065;cg.style.left=gx+'px';cg.style.top=gy+'px';requestAnimationFrame(a);})();
+document.querySelectorAll('a,button,.sc,.cer,.si,.bdg,.tc,.job,.cc,.cl,.bp,.bs,.pc').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('ch'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('ch'));
+});
+document.querySelectorAll('p,li').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('ct'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('ct'));
+});
+
+// ── SCROLL / NAV ──
+window.addEventListener('scroll',()=>{
+  const s=window.scrollY,tot=document.body.scrollHeight-window.innerHeight;
+  document.getElementById('prog').style.width=(s/tot*100)+'%';
+  document.getElementById('nav').classList.toggle('scrolled',s>60);
+  document.querySelectorAll('section[id]').forEach(sec=>{
+    const top=sec.offsetTop-130,bot=top+sec.offsetHeight;
+    const a=document.querySelector('.nls a[data-s="'+sec.id+'"]');
+    if(a) a.classList.toggle('active',s>=top&&s<bot);
+  });
+});
+
+// ── FADE UP ──
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});
+},{threshold:.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+
+// ── TILT CARD ──
+const tcard=document.getElementById('tcard');
+if(tcard){
+  tcard.addEventListener('mousemove',e=>{
+    const r=tcard.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    tcard.style.transform=`rotateY(${x*10}deg) rotateX(${-y*10}deg) scale(1.025)`;
+    tcard.style.transition='transform .06s,box-shadow .3s,border-color .3s';
+  });
+  tcard.addEventListener('mouseleave',()=>{
+    tcard.style.transform='rotateY(0) rotateX(0) scale(1)';
+    tcard.style.transition='transform .5s ease,box-shadow .3s,border-color .3s';
+  });
+}
+
+// ── PROJECT CARD TILT ──
+document.querySelectorAll('.pc').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`translateY(-6px) rotateY(${x*6}deg) rotateX(${-y*6}deg)`;
+    card.style.transition='transform .06s,box-shadow .3s,border-color .3s';
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='translateY(0) rotateY(0) rotateX(0)';
+    card.style.transition='transform .5s cubic-bezier(.4,0,.2,1),box-shadow .3s,border-color .3s';
+  });
+});
+
+// ── SKILL SPOTLIGHT ──
+document.querySelectorAll('.sc').forEach(cat=>{
+  cat.addEventListener('mousemove',e=>{
+    const r=cat.getBoundingClientRect();
+    const sp=cat.querySelector('.sp');
+    sp.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+    sp.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+  });
+});
+
+// ── RIPPLE ──
+document.querySelectorAll('.t2').forEach(tag=>{
+  tag.addEventListener('click',e=>{
+    const r=tag.getBoundingClientRect();
+    const rip=document.createElement('span');rip.className='rip';
+    const sz=Math.max(r.width,r.height)*2;
+    rip.style.cssText=`width:${sz}px;height:${sz}px;left:${e.clientX-r.left-sz/2}px;top:${e.clientY-r.top-sz/2}px`;
+    tag.appendChild(rip);setTimeout(()=>rip.remove(),600);
+  });
+});
+
+// ── MAGNETIC BUTTONS ──
+document.querySelectorAll('.bm').forEach(w=>{
+  const btn=w.querySelector('a');
+  w.addEventListener('mousemove',e=>{
+    const r=w.getBoundingClientRect();
+    const x=(e.clientX-r.left-r.width/2)*.28,y=(e.clientY-r.top-r.height/2)*.28;
+    btn.style.transform=`translate(${x}px,${y}px)`;
+    btn.style.transition='transform .08s,background .2s,box-shadow .2s';
+  });
+  w.addEventListener('mouseleave',()=>{
+    btn.style.transform='translate(0,0)';
+    btn.style.transition='transform .5s cubic-bezier(.4,0,.2,1),background .2s,box-shadow .2s';
+  });
+});
+
+// ── HERO ENTRANCE ──
+document.querySelectorAll('#hc > *').forEach((el,i)=>{
+  el.style.cssText+=`opacity:0;transform:translateY(22px);transition:opacity .8s ease ${i*.13}s,transform .8s cubic-bezier(.4,0,.2,1) ${i*.13}s`;
+  setTimeout(()=>{el.style.opacity='1';el.style.transform='translateY(0)';},80);
+});
+
+// ── COUNTERS ──
+const coObs=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    const el=entry.target;
+    const target=parseInt(el.dataset.target);
+    const suf=el.querySelector('span')?el.querySelector('span').textContent:'';
+    let start=null;
+    (function step(ts){
+      if(!start) start=ts;
+      const p=Math.min((ts-start)/1400,1);
+      const ease=1-Math.pow(1-p,3);
+      el.innerHTML=Math.floor(ease*target)+(suf?'<span>'+suf+'</span>':'');
+      if(p<1) requestAnimationFrame(step);
+    })(performance.now());
+    coObs.unobserve(el);
+  });
+},{threshold:.6});
+document.querySelectorAll('.sn[data-target]').forEach(el=>coObs.observe(el));
+
+// ── PROJECT DRIVE LINKS ──
+document.querySelectorAll('.pc[data-drive]').forEach(card=>{
+  card.addEventListener('click', e=>{
+    // Don't fire if clicking inside a link
+    if(e.target.closest('a')) return;
+    const url = card.dataset.drive;
+    if(url) window.open(url,'_blank','noopener,noreferrer');
+  });
+});
+
+// ── EXPERIENCE TABS ──
+(function(){
+  const tabs = document.querySelectorAll('.exp-tab');
+  const cards = document.querySelectorAll('.exp-card');
+  const pips = document.querySelectorAll('.exp-pip');
+  let current = 0;
+  let autoTimer = null;
+
+  function switchTo(idx){
+    if(idx === current) return;
+    // Exit current card
+    const prevCard = document.querySelector('.exp-card.active');
+    if(prevCard){ prevCard.classList.add('exit'); prevCard.classList.remove('active'); }
+    setTimeout(()=>{ if(prevCard) prevCard.classList.remove('exit'); }, 300);
+    // Deactivate tabs & pips
+    tabs[current].classList.remove('active');
+    pips[current].classList.remove('active');
+    // Activate new
+    current = idx;
+    tabs[current].classList.add('active');
+    pips[current].classList.add('active');
+    cards[current].classList.add('active');
+    // On mobile, scroll tab into view
+    tabs[current].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  }
+
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      clearInterval(autoTimer);
+      switchTo(parseInt(tab.dataset.exp));
+      startAuto();
+    });
+  });
+
+  pips.forEach(pip=>{
+    pip.addEventListener('click',()=>{
+      clearInterval(autoTimer);
+      switchTo(parseInt(pip.dataset.exp));
+      startAuto();
+    });
+  });
+
+  function startAuto(){
+    autoTimer = setInterval(()=>{
+      // Only auto-advance if section is in viewport
+      const section = document.getElementById('experience');
+      const r = section.getBoundingClientRect();
+      if(r.top < window.innerHeight && r.bottom > 0){
+        switchTo((current+1) % tabs.length);
+      }
+    }, 4500);
+  }
+  startAuto();
+})();
+
+// ── MOBILE MENU ──
+let mOpen=false;
+function toggleMenu(){
+  mOpen=!mOpen;
+  const links=document.querySelector('.nls');
+  links.style.cssText=mOpen?'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(6,6,15,.98);padding:2rem;gap:1.5rem;border-bottom:.5px solid rgba(255,255,255,.08);z-index:499;backdrop-filter:blur(12px)':'display:none';
+}
+document.querySelectorAll('.nls a').forEach(a=>{
+  a.addEventListener('click',()=>{mOpen=false;document.querySelector('.nls').style.cssText='display:none';});
+});
+</script>
+</body>
+</html>
